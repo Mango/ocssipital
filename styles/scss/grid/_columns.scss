@@ -1,0 +1,46 @@
+/*---------------------------------------*/
+/* GRID COLUMNS                          */
+/*---------------------------------------*/
+
+%column {
+
+  float:left;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+
+  @if ($column_gutter_size > 0){
+    @if ($column_gutter_unit == pixels){
+      padding:0 #{($column_gutter_size / 2)}px;
+    }
+  }
+  @if ($highlight == true){
+    background:rgba(0,255,0,0.2);
+    border:1px solid rgba(0,0,255,0.5);
+    @if ($column_gutter_size != 0){
+      @if ($column_gutter_unit == pixels){
+        box-shadow:0 0 0 #{($column_gutter_size / 2)}px rgba(255,0,0,0.2) inset;
+      }
+    }
+  }
+
+}
+
+// Column generator
+@for $index from 1 through $column_number {
+  .col-#{$index}{
+    
+    @extend %column;
+    width:percentage(($index / $column_number));
+
+    @if ($column_gutter_size > 0){
+      @if ($column_gutter_unit == percent){
+        padding:0 percentage(($index / $column_number / $column_gutter_size));
+        @if ($highlight == true){
+          box-shadow:0 0 0 #{($index / $column_number * 7)}rem rgba(255,0,0,0.2) inset;
+        }
+      }
+    }
+
+  }
+}

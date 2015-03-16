@@ -1,0 +1,14 @@
+/*---------------------------------------*/
+/* MEDIAQUERIES S                        */
+/*---------------------------------------*/
+
+%column_s {
+  float:none;
+  width:auto;
+}
+
+@for $index from 1 through $column_number {
+  .col-#{$index}{
+    @extend %column_s;
+  }
+}

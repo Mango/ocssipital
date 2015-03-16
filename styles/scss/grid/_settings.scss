@@ -1,0 +1,30 @@
+/*---------------------------------------*/
+/* GRID SETTINGS					     */
+/*---------------------------------------*/
+
+// Number of columns
+$column_number: 12;
+
+// Spacing
+$column_gutter_size:10;
+
+// Spacing unit (null, pixels or percent)
+$column_gutter_unit:pixels;
+
+// Highlight columns
+$highlight:true;
+
+/*---------------------------------------*/
+/* VIEWPORT SETTINGS				     */
+/*---------------------------------------*/
+
+/*
+  Tip
+  Viewports: S - Mobile / M - Tablet / L - Desktop / XL - Big Screens
+  The values used are are min-width, except for s that is max-width
+*/
+
+$viewport_s : 480px;
+$viewport_m : 720px;
+$viewport_l : 1025px;
+$viewport_xl: 1200px;
