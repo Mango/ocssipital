@@ -1,0 +1,15 @@
+/*---------------------------------------*/
+/* VISIBILITY                            */
+/*---------------------------------------*/
+
+/*
+  Tip
+  Use these clases to show or hide elements according to the viewport
+*/
+
+.visible-s,
+.visible-m,
+.visible-l,
+.visible-xl {
+  display:none;
+}

@@ -3,22 +3,21 @@
 /*---------------------------------------*/
 
 /*
-  Tip
   SASS doesn't allow @each with imports :(
 */
 
 @media screen and (min-width:#{$viewport_m}){
-  @import '_m';  
+  @import "_m";
 }
 
 @media screen and (min-width:#{$viewport_l}){
-  @import '_l';  
+  @import "_l";
 }
 
 @media screen and (min-width:#{$viewport_xl}){
-  @import '_xl';  
+  @import "_xl";
 }
 
 @media screen and (max-width:#{$viewport_s}){
-  @import '_s';  
+  @import "_s";
 }

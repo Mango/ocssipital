@@ -2,13 +2,8 @@
 /* MEDIAQUERIES S                        */
 /*---------------------------------------*/
 
-%column_s {
-  float:none;
-  width:auto;
-}
+@import "grid/columns/_columns-s";
+@import "grid/visibility/_visibility-s";
 
-@for $index from 1 through $column_number {
-  .col-#{$index}{
-    @extend %column_s;
-  }
-}
+// Components
+@import "components/example/_example-s";

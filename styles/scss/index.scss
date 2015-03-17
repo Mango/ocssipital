@@ -1,3 +1,11 @@
-@import 'grid/_settings.scss';
-@import 'grid/_columns.scss';
-@import 'mediaqueries/_mediaqueries.scss';
+// Grid
+@import "grid/settings/_settings";
+@import "grid/mixins/_mixins";
+@import "grid/columns/_columns";
+@import "grid/visibility/_visibility";
+
+// Components
+@import "components/example/_example";
+
+// Mediaqueries
+@import "mediaqueries/_mediaqueries";

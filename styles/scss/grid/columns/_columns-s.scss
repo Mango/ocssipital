@@ -1,0 +1,15 @@
+/*---------------------------------------*/
+/* GRID COLUMNS S                        */
+/*---------------------------------------*/
+
+// Eliminate columns on mobile
+%column_s {
+  width:100%;
+  clear:both;
+}
+
+@for $index from 1 through $column_number {
+  .col-#{$index}{
+    @extend %column_s;
+  }
+}
