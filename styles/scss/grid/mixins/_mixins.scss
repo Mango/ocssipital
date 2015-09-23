@@ -4,5 +4,6 @@
 
 // Use this function inside a mediaquery to change it's column size
 @mixin changecol($colsize){
+  clear:none !important;
   width:percentage(($colsize / $column_number));
 }

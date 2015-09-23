@@ -1,0 +1,157 @@
+@import "grid/settings/_settings";
+@import "grid/mixins/_mixins";
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, 
+cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, 
+ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, hr, button, figure
+{margin:0; padding:0; border:0; outline:0; font-size:100%; vertical-align: baseline; background:transparent;}   
+ol, ul {list-style:none;}
+h1, h2, h3, h4, h5, h6, li {line-height:100%;}
+blockquote, q {quotes:none;}
+table {border-collapse:collapse; border-spacing:0;}
+input, textarea, button {font-family:inherit; font-size:1em;}
+textarea {overflow:auto;}
+
+/** {box-shadow:0 0 0 1px red inset;}*/
+
+
+.header a, .box, .box span {-webkit-transition:all 0.3s;}
+
+img {display:block; width:100%; height:auto;}
+
+a {display:inline-block; padding:0 0.5em; color:#000; text-decoration:none; background:#FFFFBF; border-radius:2px;}
+a:visited {background:#EEE; border-bottom:1px solid;}
+a:hover {color:#FFF; background:#000;}
+
+code {color:#F00; font-family:inherit; font-size:1em;}
+
+.wrap {
+  clear:both;
+  float:none;
+  padding:4em 2em;
+  margin:0 auto;
+  overflow:hidden;
+  max-width:1600px;
+}
+
+body {font:87.5%/1.75em Courier, monospace; color:#000;}
+
+.usage {
+
+  padding-top:1em;
+  text-align:center;
+
+  li {
+    line-height:1.5em;
+    list-style:decimal inside;
+    padding:2em 1em;
+    border-bottom:4px double #000;
+  }
+
+}
+
+.header {text-align:center; padding:10em 0 4em;}
+.header h1 {font-size:4em;}
+.header a, .header a:hover {padding:0; background:none; border-bottom:1px solid;}
+.header a:hover {color:#000; margin:0 0.2em;}
+.header img {}
+
+.intro {
+
+  text-align:right;
+
+  h2, p {
+    padding-right:2.25em;
+  }
+
+  h2 {
+    margin:1em 0 -1em 0;
+  }
+
+  p {
+    font-size:1.25em;
+    line-height:1.75em;
+  }
+
+  .figure {
+
+    a {
+      font-size:0.875em;
+      border-radius:0 0 2px 0;
+    }
+
+  }
+
+}
+.box, .box span {display:block;}
+.box, .box:visited {height:18em; text-align:center; background:#FAFAFA; position:relative; border:1px solid #000;}
+.box span {font-size:1.5em; position:absolute; width:100%; top:42%;}
+.box:hover {border-color:#000;}
+.box:hover span {font-size:1.5em; color:#000;}
+
+h2 {
+  font-weight:normal;
+  font-size:1.5em;
+  line-height:1.25em;
+  padding-bottom:2em;
+}
+
+
+.mainText {
+
+  .col-9 {
+    float:right;
+    margin-bottom:3em;
+  }  
+
+  .col-3 {
+    margin-top:-2.5em;
+  }
+
+}
+
+.lettering {
+
+  font-size:2em;
+  padding:0;
+
+  .col-1 {
+
+    text-align:center;
+    line-height:4.25em;
+
+    &:nth-child(even){
+      background:#FAFAFA;
+    }
+
+  }
+
+}
+
+.secondaryText {
+
+  p {
+    padding-bottom:3em;
+  }
+
+}
+
+.footer {
+  margin-top:-3em;
+  text-align:center;
+  color:#666;
+}
+
+@media screen and (min-width:#{$viewport_l}){
+  .wrap {padding:4em 0;}
+  .usage li {border-top:4px double #000;}
+  .mainText .col-9 {-webkit-columns:3; -webkit-column-gap:2.25em;}
+  .secondaryText p {-webkit-columns:4; -webkit-column-gap:2.25em;}
+  .lettering {margin:-3em auto;}
+}
+
+@media screen and (max-width:#{$viewport_s}){
+  .lettering .col-1 {@include changecol(2);}
+}
+
+
