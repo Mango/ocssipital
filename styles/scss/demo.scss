@@ -25,11 +25,13 @@
   body {
     font:87.5%/1.75em Courier, monospace;
     color:#000;
+    background:url(../../images/bg.jpg) repeat 0 0;
   }
 
   .header a,
   .box,
-  .box span {-webkit-transition:all 0.3s;}
+  .box span,
+  .download {-webkit-transition:all 0.3s;}
 
   code {
     font-family:inherit;
@@ -44,7 +46,9 @@
 
   h2 {
     font-weight:normal;
+    letter-spacing:0.25em;
     font-size:1.5em;
+    text-transform:uppercase;
     line-height:1.25em;
     padding-bottom:2em;
   }
@@ -55,16 +59,11 @@
     padding:0 0.5em;
     color:#000;
     text-decoration:none;
-    background:#FFFFBF;
-
-    &:visited {
-      background:#EEE;
-      border-bottom:1px solid;
-    }
+    background:rgba(255,255,0,0.15);
 
     &:hover {
       color:#FFF;
-      background:#000;
+      background:rgba(0,0,0,0.75) !important;
     }
 
   }
@@ -99,6 +98,7 @@
     a:hover {
       color:#000;
       margin:0 0.2em;
+      background:none !important;
     }
 
   }
@@ -112,13 +112,13 @@
     text-align:right;
 
     h2 {
-      margin:0.5em 1em -1em 0;
+      margin:1em 2em -1em 0;
     }
 
     p {
       font-size:1.25em;
       line-height:1.75em;
-      margin-right:1em;
+      margin-right:2em;
     }
 
     .figure {
@@ -126,6 +126,7 @@
       a {
         font-size:0.875em;
         border-radius:0 0 2px 0;
+        background:rgba(0,0,0,0.1);
       }
 
     }
@@ -135,15 +136,9 @@
   .download {
 
     text-align:center;
-    padding:3em 0;
-    margin:0 1em;
+    padding:3em 0 3.1em;
+    border:2px solid;
     background:none;
-    border:1px solid;
-
-    &:hover {
-      color:#000;
-      background:#FFFFBF;
-    }
 
     img {
       width:40%;
@@ -154,6 +149,13 @@
     span {
       display:block;
       padding-top:2em;
+    }
+
+    &:hover {
+      transform:scale(1.2);
+      color:#000;
+      background:rgba(0,0,0,0.1) !important;
+      border-color:#000;
     }
 
 }
@@ -267,7 +269,7 @@
     line-height:4.25em;
 
     &:nth-child(even){
-      background:#FAFAFA;
+      background:rgba(0,0,0,0.03);
     }
 
   }
