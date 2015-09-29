@@ -1,65 +1,166 @@
-@import "ocssipital/_settings.scss";
-@import "ocssipital/_mixins.scss";
+/*- Imports ----------------------------------------------------------------*/
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, 
-cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, 
-ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, hr, button, figure
-{margin:0; padding:0; border:0; outline:0; font-size:100%; vertical-align: baseline; background:transparent;}   
-ol, ul {list-style:none;}
-h1, h2, h3, h4, h5, h6, li {line-height:100%;}
-blockquote, q {quotes:none;}
-table {border-collapse:collapse; border-spacing:0;}
-input, textarea, button {font-family:inherit; font-size:1em;}
-textarea {overflow:auto;}
+  @import "ocssipital/_settings.scss";
+  @import "ocssipital/_mixins.scss";
 
-.header a, .box, .box span {-webkit-transition:all 0.3s;}
+/*-----------------------------------------------------------------------------------------------*/
 
-img {display:block; width:100%; height:auto;}
+/*- Reset ------------------------------------------------------------------*/
 
-a {display:inline-block; padding:0 0.5em; color:#000; text-decoration:none; background:#FFFFBF;}
-a:visited {background:#EEE; border-bottom:1px solid;}
-a:hover {color:#FFF; background:#000;}
+  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, 
+  cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, 
+  ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, hr, button, figure
+  {margin:0; padding:0; border:0; outline:0; font-size:100%; vertical-align: baseline; background:transparent;}   
+  ol, ul {list-style:none;}
+  h1, h2, h3, h4, h5, h6, li {line-height:100%;}
+  blockquote, q {quotes:none;}
+  table {border-collapse:collapse; border-spacing:0;}
+  input, textarea, button {font-family:inherit; font-size:1em;}
+  textarea {overflow:auto;}
 
-code {font-family:inherit; font-size:1em;}
+/*-----------------------------------------------------------------------------------------------*/
 
-.wrap {
-  clear:both;
-  float:none;
-  padding:4em 0;
-  margin:0 auto;
-  max-width:1400px;
-}
+/*- General ---------------------------------------------------------------*/
 
-.download {
-
-  text-align:center;
-  padding:3em 0;
-  margin:0 1em;
-  background:none;
-  border:1px solid;
-
-  &:hover {
+  body {
+    font:87.5%/1.75em Courier, monospace;
     color:#000;
-    background:#FFFFBF;
   }
 
-  img, span {
-    display:block;
+  .header a,
+  .box,
+  .box span {-webkit-transition:all 0.3s;}
+
+  code {
+    font-family:inherit;
+    font-size:1em;
   }
 
   img {
-    width:40%;
+    display:block;
+    width:100%;
     height:auto;
-    margin:0 auto;
   }
 
-  span {
-    padding-top:2em;
+  h2 {
+    font-weight:normal;
+    font-size:1.5em;
+    line-height:1.25em;
+    padding-bottom:2em;
   }
+
+  a {
+
+    display:inline-block;
+    padding:0 0.5em;
+    color:#000;
+    text-decoration:none;
+    background:#FFFFBF;
+
+    &:visited {
+      background:#EEE;
+      border-bottom:1px solid;
+    }
+
+    &:hover {
+      color:#FFF;
+      background:#000;
+    }
+
+  }
+
+  .wrap {
+    clear:both;
+    float:none;
+    padding:4em 0;
+    margin:0 auto;
+    max-width:1400px;
+  }
+
+/*-----------------------------------------------------------------------------------------------*/
+
+/*- Header ----------------------------------------------------------------*/
+
+  .header {
+
+    text-align:center;
+    padding:8em 0 4em;
+
+    h1 {
+      font-size:4em;
+    }
+
+    a, a:hover {
+      padding:0;
+      background:none;
+      border-bottom:1px solid;
+    }
+
+    a:hover {
+      color:#000;
+      margin:0 0.2em;
+    }
+
+  }
+
+/*-----------------------------------------------------------------------------------------------*/
+
+/*- Intro -----------------------------------------------------------------*/
+
+  .intro {
+
+    text-align:right;
+
+    h2 {
+      margin:0.5em 1em -1em 0;
+    }
+
+    p {
+      font-size:1.25em;
+      line-height:1.75em;
+      margin-right:1em;
+    }
+
+    .figure {
+
+      a {
+        font-size:0.875em;
+        border-radius:0 0 2px 0;
+      }
+
+    }
+
+  }
+
+  .download {
+
+    text-align:center;
+    padding:3em 0;
+    margin:0 1em;
+    background:none;
+    border:1px solid;
+
+    &:hover {
+      color:#000;
+      background:#FFFFBF;
+    }
+
+    img {
+      width:40%;
+      height:auto;
+      margin:0 auto;
+    }
+
+    span {
+      display:block;
+      padding-top:2em;
+    }
 
 }
 
-body {font:87.5%/1.75em Courier, monospace; color:#000;}
+/*-----------------------------------------------------------------------------------------------*/
+
+/*- Features --------------------------------------------------------------*/
 
 .features {
 
@@ -94,56 +195,66 @@ body {font:87.5%/1.75em Courier, monospace; color:#000;}
 
 }
 
-.feature-1 {background:url(../../images/body/body2.jpg) no-repeat 0 0;}
-.feature-2 {background:url(../../images/body/body3.jpg) no-repeat 0 0;}
-.feature-3 {background:url(../../images/body/body4.jpg) no-repeat 0 0;}
+.feature-1 {
+  background:url(../../images/body/body2.jpg) no-repeat 0 0;
+}
+.feature-2 {
+  background:url(../../images/body/body3.jpg) no-repeat 0 0;
+}
+.feature-3 {
+  background:url(../../images/body/body4.jpg) no-repeat 0 0;
+}
 
-.header {text-align:center; padding:8em 0 4em;}
-.header h1 {font-size:4em;}
-.header a, .header a:hover {padding:0; background:none; border-bottom:1px solid;}
-.header a:hover {color:#000; margin:0 0.2em;}
-.header img {}
+/*-----------------------------------------------------------------------------------------------*/
 
-.intro {
+/*- Grid example ----------------------------------------------------------*/
 
-  text-align:right;
+  .gridExample {
 
-  h2 {
-    margin:0.5em 1em -1em 0;
-  }
+    padding-top:0;
+    margin-top:-3em;
 
-  p {
-    font-size:1.25em;
-    line-height:1.75em;
-    margin-right:1em;
-  }
+    li {
+      color:#777;
+      padding:1em 0;
+      text-align:center;
+      border:1px solid #FFF;
+    }
 
-  .figure {
-
-    a {
-      font-size:0.875em;
-      border-radius:0 0 2px 0;
+    @for $index from 1 through $column_number {
+      .#{$column_prefix}-#{$index}{
+        background:darken(#FAFAFA, $index);
+      }
     }
 
   }
 
-}
+/*-----------------------------------------------------------------------------------------------*/
 
-h2 {
-  font-weight:normal;
-  font-size:1.5em;
-  line-height:1.25em;
-  padding-bottom:2em;
-}
+/*- Text ------------------------------------------------------------------*/
 
-.mainText,
-.secondaryText {
+  .mainText,
+  .secondaryText {
 
-  p {
-    padding:0 2.5em 2em 0;
+    p {
+      padding:0 2.5em 3em 0;
+    }
+
   }
 
-}
+  .secondaryText {
+
+    q {
+      font-size:1.5em;
+      line-height:170%;
+      padding-right:2em;
+    }
+
+  }
+
+/*-----------------------------------------------------------------------------------------------*/
+
+/*- Lettering -------------------------------------------------------------*/
 
 .lettering {
 
@@ -163,45 +274,45 @@ h2 {
 
 }
 
-.gridExample {
+/*-----------------------------------------------------------------------------------------------*/
 
-  padding-top:0;
-  margin-top:-3em;
+/*- Thinkers --------------------------------------------------------------*/
+
+.thinkers {
+
+  ul {
+    margin-top:-2em;
+  }
 
   li {
-    color:#777;
-    padding:1em 0;
+
     text-align:center;
-    border:1px solid #FFF;
-  }
+    line-height:220px;
+    font-size:8em;
+    opacity:0.75;
+    transition:opacity 0.5s;
 
-  @for $index from 1 through $column_number {
-  .#{$column_prefix}-#{$index}{
-    background:darken(#FAFAFA, $index);
-  }
-}
+    &:hover {
+      opacity:1;
+    }
 
-}
-
-.secondaryText {
-
-  q {
-    font-size:1.5em;
-    line-height:170%;
-    padding-right:2em;
-  }
-
-  p {
-    padding-bottom:3em;
   }
 
 }
+
+/*-----------------------------------------------------------------------------------------------*/
+
+/*- Footer ---------------------------------------------------------------*/
 
 .footer {
   text-align:center;
   font-size:0.875em;
   color:#666;
 }
+
+/*-----------------------------------------------------------------------------------------------*/
+
+/*- Mediaqueries ---------------------------------------------------------*/
 
 @include mediaquery(s){
 
@@ -237,32 +348,3 @@ h2 {
   }
 
 }
-.gestures {
-
-  ul {
-    margin-top:-2em;
-  }
-
-  li {
-
-    text-align:center;
-    line-height:220px;
-    font-size:8em;
-    opacity:0.75;
-    transition:opacity 0.5s;
-
-    &:hover {
-      opacity:1;
-    }
-
-  }
-
-  img {
-    display:block;
-    width:100%;
-    height:auto;
-  }
-
-}
-
-
