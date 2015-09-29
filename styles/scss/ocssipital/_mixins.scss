@@ -44,7 +44,7 @@
             margin-right:percentage(($index / $column_number));
           }
         }
-        .visibility-#{$viewport_label}{
+        .visible-#{$viewport_label}{
           display:block;
         }
       }
@@ -67,7 +67,7 @@
             margin-right:percentage(($index / $column_number));
           }
         }
-        .visibility-#{$viewport_label}{
+        .visible-#{$viewport_label}{
           display:block;
         }
       }
@@ -90,7 +90,7 @@
             margin-right:percentage(($index / $column_number));
           }
         }
-        .visibility-#{$viewport_label}{
+        .visible-#{$viewport_label}{
           display:block;
         }
       }
