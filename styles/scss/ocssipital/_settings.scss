@@ -1,0 +1,21 @@
+/*---------------------------------------*/
+/* SETTINGS                              */
+/*---------------------------------------*/
+
+// Flexbox
+$flexbox:false;
+
+// Number of columns
+$column_number:12;
+
+// Column prefix
+$column_prefix: "grid-column";
+
+// Column container name (to clear floats or contain flexboxes)
+$container_name: "grid-container";
+
+// Debug grid
+$debug:false;
+
+// Viewports (size, min-width, max-width)
+$viewports: (s, 0, 639px), (m, 640px, 1024px), (l, 1025px, 1199px), (xl, 1200px, 0);

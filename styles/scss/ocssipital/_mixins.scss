@@ -1,0 +1,99 @@
+/*---------------------------------------*/
+/* MIXINS                                */
+/*---------------------------------------*/
+
+@mixin mediaquery($size) {
+  @each $viewport in $viewports {
+    $viewport_label: nth($viewport, 1);
+    $viewport_min_size : nth($viewport, 2);
+    $viewport_max_size : nth($viewport, 3);
+    @if ($viewport_label == $size){
+      @if ($viewport_min_size != 0 and $viewport_max_size == 0) {
+        @media only screen and (min-width:$viewport_min_size) { @content; }
+      }
+      @else if ($viewport_min_size == 0 and $viewport_max_size != 0) {
+        @media only screen and (max-width:$viewport_max_size) { @content; }
+      }
+      @else {
+        @media only screen and (min-width:$viewport_min_size) and (max-width:$viewport_max_size) { @content; }
+      }
+    }
+  }
+}
+
+@mixin create_mediaqueries() {
+  @each $viewport in $viewports {
+    $viewport_label: nth($viewport, 1);
+    $viewport_min_size : nth($viewport, 2);
+    $viewport_max_size : nth($viewport, 3);
+    @if ($viewport_min_size != 0 and $viewport_max_size == 0) {
+      @media only screen and (min-width:$viewport_min_size) {
+        @for $index from 1 through $column_number {
+          .#{$column_prefix}-#{$index}-#{$viewport_label}{
+            @if ($flexbox == true){
+              flex:0 0 percentage(($index / $column_number));
+            }
+            @else {
+              width:percentage(($index / $column_number));
+            }
+          }
+          .jump-left-#{$column_prefix}-#{$index}{
+            margin-left:percentage(($index / $column_number));
+          }
+          .jump-right-#{$column_prefix}-#{$index}{
+            margin-right:percentage(($index / $column_number));
+          }
+        }
+        .visibility-#{$viewport_label}{
+          display:block;
+        }
+      }
+    }
+    @else if ($viewport_min_size == 0 and $viewport_max_size != 0) {
+      @media only screen and (max-width:$viewport_max_size) {
+        @for $index from 1 through $column_number {
+          .#{$column_prefix}-#{$index}-#{$viewport_label}{
+            @if ($flexbox == true){
+              flex:0 0 percentage(($index / $column_number));
+            }
+            @else {
+              width:percentage(($index / $column_number));
+            }
+          }
+          .jump-left-#{$column_prefix}-#{$index}{
+            margin-left:percentage(($index / $column_number));
+          }
+          .jump-right-#{$column_prefix}-#{$index}{
+            margin-right:percentage(($index / $column_number));
+          }
+        }
+        .visibility-#{$viewport_label}{
+          display:block;
+        }
+      }
+    }
+    @else {
+      @media only screen and (min-width:$viewport_min_size) and (max-width:$viewport_max_size) {
+        @for $index from 1 through $column_number {
+          .#{$column_prefix}-#{$index}-#{$viewport_label}{
+            @if ($flexbox == true){
+              flex:0 0 percentage(($index / $column_number));
+            }
+            @else {
+              width:percentage(($index / $column_number));
+            }
+          }
+          .jump-left-#{$column_prefix}-#{$index}{
+            margin-left:percentage(($index / $column_number));
+          }
+          .jump-right-#{$column_prefix}-#{$index}{
+            margin-right:percentage(($index / $column_number));
+          }
+        }
+        .visibility-#{$viewport_label}{
+          display:block;
+        }
+      }
+    }
+  }
+}

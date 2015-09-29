@@ -1,0 +1,65 @@
+/*---------------------------------------*/
+/* COLUMNS                               */
+/*---------------------------------------*/
+
+@if ($flexbox == true){
+  .#{$container_name}{
+    display:-webkit-box;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:-webkit-flex;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    align-content:flex-start;
+    align-items:flex-start;
+  }
+}
+@else {
+  .#{$container_name}:after {
+    visibility:hidden;
+    display:block;
+    content:" ";
+    clear:both;
+    height:0;
+  }
+}
+
+[class|="#{$column_prefix}"] {
+
+  @if ($flexbox == true){
+    align-self:flex-start;
+    flex-grow:0;
+    flex-shrink:0;
+  }
+  @else {
+    float:left;
+  }
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+
+  @if ($debug == true){
+    box-shadow:0 0 0 1px red inset;
+  }
+
+}
+
+// Column generator
+@for $index from 1 through $column_number {
+  .#{$column_prefix}-#{$index}{   
+    @if ($flexbox == true){
+      flex:0 0 percentage(($index / $column_number));
+    }
+    @else {
+      width:percentage(($index / $column_number));
+    }
+  }
+  .jump-left-#{$column_prefix}-#{$index}{
+    margin-left:percentage(($index / $column_number));
+  }
+  .jump-right-#{$column_prefix}-#{$index}{
+    margin-right:percentage(($index / $column_number));
+  }
+}

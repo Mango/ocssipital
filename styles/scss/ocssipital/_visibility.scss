@@ -1,0 +1,15 @@
+/*---------------------------------------*/
+/* VISIBILITY                            */
+/*---------------------------------------*/
+
+// Use these clases to show or hide elements according to the viewport
+
+%displaynone {
+  display:none;
+}
+
+@each $viewport in $viewports {
+  .visible-#{nth($viewport, 1)}{
+    @extend %displaynone;
+  }
+}

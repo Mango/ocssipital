@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,31 +10,34 @@
 </head>
 <body>
   
-  <header class="col-10 wrap header">
+  <header class="wrap header">
     <h1>O<a href="#">css</a>ipital</h1>
   </header>
 
-  <section class="col-10 wrap intro">
-    <div class="col-3">
+  <section class="grid-container wrap intro">
+    <div class="grid-column-3 grid-column-4-m grid-column-12-s">
       <h2>About</h2>
       <p><strong>Ocssipital</strong> is a simple open-source CSS grid system built using SASS with an <a href="#">object oriented CSS</a> approach. It focuses on responsiveness and flexiblity.</p>
     </div>
-    <div class="col-3">
-      <a href="#" class="box"><span>Download <strong>{1kb}</strong></span></a>
+    <div class="grid-column-3 grid-column-12-s">
+      <a href="#" class="download">
+        <img src="images/github.svg" alt="">
+        <span>Download (3kb)</span>
+      </a>
     </div>
-    <div class="col-2">
+    <div class="grid-column-2 grid-column-12-s">
       <figure class="figure">
         <img src="images/brain1.jpg" alt="Brain 1">
         <a href="http://www.artsfon.com/download/2511/1280x720/" target="_blank">Source</a>
       </figure>
     </div>
-    <div class="col-2">
+    <div class="grid-column-2 grid-column-6-s">
       <figure class="figure">
         <img src="images/brain2.jpg" alt="Brain 2">
         <a href="http://www.ihdimages.com/3d-brain-wallpaper-hd-1080p/" target="_blank">Source</a>
       </figure>
     </div>
-    <div class="col-2">
+    <div class="grid-column-2 grid-column-6-s">
       <figure class="figure">
         <img src="images/brain3.jpg" alt="Brain 3">
         <a href="http://wallpapersshd.com/anatomy-human-hd-photos/anatomy-of-the-brain-hd-wallpaper/" target="_blank">Source</a>
@@ -43,47 +45,116 @@
     </div>
   </section>
 
-  <section class="col-10 wrap usage">
-    <h2>Usage</h2>
-    <ol>
-      <li class="col-3">Download the repository and install SASS locally in order to build your CSS</li>
-      <li class="col-3">Under <strong>/grid/_settings</strong>, define a <code>$column_number</code> and a <code>$column_gutter</code>.</li>
-      <li class="col-3">Run SASS in order to compile your new column settings into <strong>ocssipital.css</strong></li>
-      <li class="col-3">All done!<br/> :D</li>
-    </ol>
+  <section class="grid-container wrap features">
+    <div class="grid-column-4 grid-column-12-s" style="background:url(images/spine2.jpg) no-repeat 0 0;">
+      <h2>How to use</h2>
+      <ol>
+        <li>Download the repository and install <a href="#">Compass</a> locally in order to build your CSS.</li>
+        <li>Under <strong>styles/scss/ocssipital/_settings.scss</strong>, define a <code>$column_number</code>.</li>
+        <li>Run <a href="#">compass watch</a> in order to compile your new grid settings into <strong>ocssipital.css</strong></li>
+        <li>Enjoy! :3</li>
+      </ol>
+    </div>
+    <div class="grid-column-4 grid-column-12-s" style="background:url(images/spine3.jpg) no-repeat 0 0;">
+      <h2>Grid System</h2>
+      <ul>
+        <li>Create an element with the class <code>grid-container</code> to act as a container of your grid.</li>
+        <li>Create columns inside the container with the class <code>grid-column-<strong>1</strong></code>. 1 being its size. The bigger the size, the wider the column.</li>
+        <li>Use the variant classes such as <code>grid-column-12-s</code> to change the column size according to a specific viewport.</li>
+      </ul>
+    </div>
+    <div class="grid-column-4 grid-column-12-s" style="background:url(images/spine4.jpg) no-repeat 0 0;">
+      <h2>Features</h2>
+      <ul>
+        <li>Supports both <code>flexbox</code> and float layouts.</li>
+        <li>Customizable column amount and sizes.</li>
+        <li>Customizable class names and viewports.</li>
+        <li>Leave hidden column gaps.</li>
+        <li>Hide or show elements accoording to the current viewport.</li>
+      </ul>
+    </div>
   </section>
 
-  <section class="col-10 wrap mainText">
-    <div class="col-3">
+  <section class="wrap gridExample">
+    <ul class="grid-container">
+      <li class="grid-column-1"><code>1</code></li>
+      <li class="grid-column-1"><code>1</code></li>
+      <li class="grid-column-1"><code>1</code></li>
+      <li class="grid-column-1"><code>1</code></li>
+      <li class="grid-column-1"><code>1</code></li>
+      <li class="grid-column-1"><code>1</code></li>
+      <li class="grid-column-1"><code>1</code></li>
+      <li class="grid-column-1"><code>1</code></li>
+      <li class="grid-column-1"><code>1</code></li>
+      <li class="grid-column-1"><code>1</code></li>
+      <li class="grid-column-1"><code>1</code></li>
+      <li class="grid-column-1"><code>1</code></li>
+      <li class="grid-column-9"><code>9</code></li>
+      <li class="grid-column-3"><code>3</code></li>
+      <li class="grid-column-6"><code>6</code></li>
+      <li class="grid-column-6"><code>6</code></li>
+      <li class="grid-column-2"><code>2</code></li>
+      <li class="grid-column-2"><code>2</code></li>
+      <li class="grid-column-8"><code>8</code></li>
+      <li class="grid-column-3"><code>3</code></li>
+      <li class="grid-column-3"><code>3</code></li>
+      <li class="grid-column-3"><code>3</code></li>
+      <li class="grid-column-3"><code>3</code></li>
+      <li class="grid-column-5"><code>5</code></li>
+      <li class="grid-column-5"><code>5</code></li>
+      <li class="grid-column-2"><code>2</code></li>
+      <li class="grid-column-4"><code>4</code></li>
+      <li class="grid-column-4"><code>4</code></li>
+      <li class="grid-column-4"><code>4</code></li>
+    </ul>
+  </section>
+
+  <section class="grid-container wrap mainText">
+    <div class="grid-column-3 grid-column-12-s">
       <img src="images/spine.png" alt="Spine">
     </div>
-    <h2 class="col-7">This page's information is taken from Wikipedia to serve as a demo</h2>
-    <p class="col-9">The <strong>human brain</strong> is the main organ of the human <a href="https://en.wikipedia.org/wiki/Nervous_system" title="Nervous system">nervous system</a>. It is located in the <a href="https://en.wikipedia.org/wiki/Human_head" title="Human head">head</a>, protected by the <a href="https://en.wikipedia.org/wiki/Human_skull" title="Human skull">skull</a>. It has the same general structure as the brains of other <a href="https://en.wikipedia.org/wiki/Mammal" title="Mammal">mammals</a>, but with a more developed <a href="https://en.wikipedia.org/wiki/Cerebral_cortex" title="Cerebral cortex">cerebral cortex</a>. Large animals such as whales and elephants have larger brains in absolute terms, but when measured using a <a href="https://en.wikipedia.org/wiki/Encephalization_quotient" title="Encephalization quotient">measure of relative brain size</a>, which compensates for body size, the quotient for the human brain is almost twice as large as that of a <a href="https://en.wikipedia.org/wiki/Bottlenose_dolphin" title="Bottlenose dolphin">bottlenose dolphin</a>, and three times as large as that of a <a href="https://en.wikipedia.org/wiki/Chimpanzee" title="Chimpanzee">chimpanzee</a>. Much of the size of the human brain comes from the cerebral cortex, especially the <a href="https://en.wikipedia.org/wiki/Frontal_lobe" title="Frontal lobe">frontal lobes</a>, which are associated with <a href="https://en.wikipedia.org/wiki/Executive_functions" title="Executive functions">executive functions</a> such as <a href="https://en.wikipedia.org/wiki/Self-control" title="Self-control">self-control</a>, <a href="https://en.wikipedia.org/wiki/Planning" title="Planning">planning</a>, <a href="https://en.wikipedia.org/wiki/Reason" title="Reason">reasoning</a>, and <a href="https://en.wikipedia.org/wiki/Abstraction" title="Abstraction">abstract thought</a>. The area of the cerebral cortex devoted to <a href="https://en.wikipedia.org/wiki/Visual_perception" title="Visual perception">vision</a>, the <a href="https://en.wikipedia.org/wiki/Visual_cortex" title="Visual cortex">visual cortex</a>, is also greatly enlarged in humans compared to other animals.</p>
-    <p class="col-9">The human cerebral cortex is a thick layer of <a href="/wiki/Nervous_tissue" title="Nervous tissue">neural tissue</a> that covers most of the brain. This layer is folded in a way that increases the amount of surface that can fit into the volume available. The pattern of folds is similar across individuals, although there are many small variations. The cortex is divided into four <a href="/wiki/Lobe_(anatomy)" title="Lobe (anatomy)">lobes</a> – the <a href="/wiki/Frontal_lobe" title="Frontal lobe">frontal lobe</a>, <a href="/wiki/Parietal_lobe" title="Parietal lobe">parietal lobe</a>, <a href="/wiki/Temporal_lobe" title="Temporal lobe">temporal lobe</a>, and <a href="/wiki/Occipital_lobe" title="Occipital lobe">occipital lobe</a>. (Some classification systems also include a <a href="/wiki/Limbic_lobe" title="Limbic lobe">limbic lobe</a> and treat the <a href="/wiki/Insular_cortex" title="Insular cortex">insular cortex</a> as a lobe.) Within each lobe are numerous cortical areas, each associated with a particular function, including vision, <a href="/wiki/Motor_control" title="Motor control">motor control</a>, and <a href="/wiki/Language" title="Language">language</a>. The left and right sides of the cortex are broadly similar in shape, and most cortical areas are replicated on both sides. Some areas, though, show strong <a href="/wiki/Lateralization_of_brain_function" title="Lateralization of brain function">lateralization</a>, particularly areas that are involved in language. In most people, the left hemisphere is dominant for language, with the right hemisphere playing only a minor role. There are other functions, such as <a href="/wiki/Spatial_visualization_ability" title="Spatial visualization ability">visual-spatial ability</a>, for which the right hemisphere is usually dominant.</p>
+    <div class="grid-column-9 grid-column-12-s">
+      <h2>This page's information is taken from Wikipedia to serve as a demo</h2>
+      <div class="grid-container">
+        <p class="grid-column-6 grid-column-12-s">The <strong>human brain</strong> is the main organ of the human <a href="https://en.wikipedia.org/wiki/Nervous_system" title="Nervous system">nervous system</a>. It is located in the <a href="https://en.wikipedia.org/wiki/Human_head" title="Human head">head</a>, protected by the <a href="https://en.wikipedia.org/wiki/Human_skull" title="Human skull">skull</a>. It has the same general structure as the brains of other <a href="https://en.wikipedia.org/wiki/Mammal" title="Mammal">mammals</a>, but with a more developed <a href="https://en.wikipedia.org/wiki/Cerebral_cortex" title="Cerebral cortex">cerebral cortex</a>. Large animals such as whales and elephants have larger brains in absolute terms, but when measured using a <a href="https://en.wikipedia.org/wiki/Encephalization_quotient" title="Encephalization quotient">measure of relative brain size</a>, which compensates for body size, the quotient for the human brain is almost twice as large as that of a <a href="https://en.wikipedia.org/wiki/Bottlenose_dolphin" title="Bottlenose dolphin">bottlenose dolphin</a>, and three times as large as that of a <a href="https://en.wikipedia.org/wiki/Chimpanzee" title="Chimpanzee">chimpanzee</a>. Much of the size of the human brain comes from the cerebral cortex, especially the <a href="https://en.wikipedia.org/wiki/Frontal_lobe" title="Frontal lobe">frontal lobes</a>, which are associated with <a href="https://en.wikipedia.org/wiki/Executive_functions" title="Executive functions">executive functions</a> such as <a href="https://en.wikipedia.org/wiki/Self-control" title="Self-control">self-control</a>, <a href="https://en.wikipedia.org/wiki/Planning" title="Planning">planning</a>, <a href="https://en.wikipedia.org/wiki/Reason" title="Reason">reasoning</a>, and <a href="https://en.wikipedia.org/wiki/Abstraction" title="Abstraction">abstract thought</a>. The area of the cerebral cortex devoted to <a href="https://en.wikipedia.org/wiki/Visual_perception" title="Visual perception">vision</a>, the <a href="https://en.wikipedia.org/wiki/Visual_cortex" title="Visual cortex">visual cortex</a>, is also greatly enlarged in humans compared to other animals.</p>
+        <p class="grid-column-6 grid-column-12-s">The human cerebral cortex is a thick layer of <a href="/wiki/Nervous_tissue" title="Nervous tissue">neural tissue</a> that covers most of the brain. This layer is folded in a way that increases the amount of surface that can fit into the volume available. The pattern of folds is similar across individuals, although there are many small variations. The cortex is divided into four <a href="/wiki/Lobe_(anatomy)" title="Lobe (anatomy)">lobes</a> – the <a href="/wiki/Frontal_lobe" title="Frontal lobe">frontal lobe</a>, <a href="/wiki/Parietal_lobe" title="Parietal lobe">parietal lobe</a>, <a href="/wiki/Temporal_lobe" title="Temporal lobe">temporal lobe</a>, and <a href="/wiki/Occipital_lobe" title="Occipital lobe">occipital lobe</a>. (Some classification systems also include a <a href="/wiki/Limbic_lobe" title="Limbic lobe">limbic lobe</a> and treat the <a href="/wiki/Insular_cortex" title="Insular cortex">insular cortex</a> as a lobe.) Within each lobe are numerous cortical areas, each associated with a particular function, including vision, <a href="/wiki/Motor_control" title="Motor control">motor control</a>, and <a href="/wiki/Language" title="Language">language</a>. The left and right sides of the cortex are broadly similar in shape, and most cortical areas are replicated on both sides. Some areas, though, show strong <a href="/wiki/Lateralization_of_brain_function" title="Lateralization of brain function">lateralization</a>, particularly areas that are involved in language.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="col-10 wrap lettering">
-    <span class="col-1">&#9672;</span>
-    <span class="col-1">H</span>
-    <span class="col-1">U</span>
-    <span class="col-1">M</span>
-    <span class="col-1">A</span>
-    <span class="col-1">N</span>
-    <span class="col-1">&#9672;</span>
-    <span class="col-1">B</span>
-    <span class="col-1">R</span>
-    <span class="col-1">A</span>
-    <span class="col-1">I</span>
-    <span class="col-1">N</span>
+  <section class="grid-container wrap lettering">
+    <span class="grid-column-1 grid-column-2-s">&#9672;</span>
+    <span class="grid-column-1 grid-column-2-s">H</span>
+    <span class="grid-column-1 grid-column-2-s">U</span>
+    <span class="grid-column-1 grid-column-2-s">M</span>
+    <span class="grid-column-1 grid-column-2-s">A</span>
+    <span class="grid-column-1 grid-column-2-s">N</span>
+    <span class="grid-column-1 grid-column-2-s">&#9672;</span>
+    <span class="grid-column-1 grid-column-2-s">B</span>
+    <span class="grid-column-1 grid-column-2-s">R</span>
+    <span class="grid-column-1 grid-column-2-s">A</span>
+    <span class="grid-column-1 grid-column-2-s">I</span>
+    <span class="grid-column-1 grid-column-2-s">N</span>
   </section>
 
-  <section class="col-10 wrap secondaryText">
-    <h2>More text&hellip;</h2>
-    <p>Despite being protected by the thick bones of the skull, suspended in <a href="/wiki/Cerebrospinal_fluid" title="Cerebrospinal fluid">cerebrospinal fluid</a>, and isolated from the <a href="/wiki/Circulatory_system" title="Circulatory system">bloodstream</a> by the <a href="/wiki/Blood%E2%80%93brain_barrier" title="Blood–brain barrier">blood–brain barrier</a>, the human brain is susceptible to damage and disease. The most common forms of physical damage are <a href="/wiki/Closed_head_injury" title="Closed head injury">closed head injuries</a> such as a blow to the <a href="/wiki/Human_head" title="Human head">head</a>, a <a href="/wiki/Stroke" title="Stroke">stroke</a>, or poisoning by a variety of chemicals which can act as <a href="/wiki/Neurotoxin" title="Neurotoxin">neurotoxins</a>, such as <a href="/wiki/Ethanol" title="Ethanol">ethanol alcohol</a>. Infection of the brain, though serious, is rare because of the biological barriers which protect it. The human brain is also susceptible to <a href="/wiki/Neurodegeneration" title="Neurodegeneration">degenerative disorders</a>, such as <a href="/wiki/Parkinson%27s_disease" title="Parkinson's disease">Parkinson's disease</a>, and <a href="/wiki/Alzheimer%27s_disease" title="Alzheimer's disease">Alzheimer's disease</a>, (mostly as the result of <a href="/wiki/Aging_brain" title="Aging brain">aging</a>) and <a href="/wiki/Multiple_sclerosis" title="Multiple sclerosis">multiple sclerosis</a>. A number of <a href="/wiki/Psychiatric_condition" title="Psychiatric condition" class="mw-redirect">psychiatric conditions</a>, such as <a href="/wiki/Schizophrenia" title="Schizophrenia">schizophrenia</a> and <a href="/wiki/Major_depressive_disorder" title="Major depressive disorder">clinical depression</a>, are thought to be associated with brain dysfunctions, although the nature of these is not well understood. The brain can also be the site of <a href="/wiki/Brain_tumors" title="Brain tumors" class="mw-redirect">brain tumors</a> and these can be <a href="/wiki/Benign_tumour" title="Benign tumour" class="mw-redirect">benign</a> or <a href="/wiki/Cancer" title="Cancer">malignant</a>.</p>
-    <p>There are some techniques for studying the brain that are used in other animals that are just not suitable for use in humans and vice versa. It is easier to obtain individual brain cells taken from other animals, for <a href="/wiki/Histology" title="Histology">study</a>. It is also possible to use invasive techniques in other animals such as inserting electrodes into the brain or disabling certains parts of the brain in order to examine the effects on behaviour – techniques that are not possible to be used in humans. However, only humans can respond to complex verbal instructions or be of use in the study of important brain functions such as language and other complex cognitive tasks, but studies from humans and from other animals, can be of mutual help. <a href="/wiki/Medical_imaging" title="Medical imaging">Medical imaging</a> technologies such as <a href="/wiki/Functional_neuroimaging" title="Functional neuroimaging">functional neuroimaging</a> and <a href="/wiki/Electroencephalography" title="Electroencephalography">EEG</a> recordings are important techniques in studying the brain. The complete functional understanding of the human brain is an ongoing challenge for <a href="/wiki/Neuroscience" title="Neuroscience">neuroscience</a>.</p>
+  <section class="grid-container wrap secondaryText">
+    <p class="grid-column-3 grid-column-6-m grid-column-12-s">Despite being protected by the thick bones of the skull, suspended in <a href="/wiki/Cerebrospinal_fluid" title="Cerebrospinal fluid">cerebrospinal fluid</a>, and isolated from the <a href="/wiki/Circulatory_system" title="Circulatory system">bloodstream</a> by the <a href="/wiki/Blood%E2%80%93brain_barrier" title="Blood–brain barrier">blood–brain barrier</a>, the human brain is susceptible to damage and disease. The most common forms of physical damage are <a href="/wiki/Closed_head_injury" title="Closed head injury">closed head injuries</a> such as a blow to the <a href="/wiki/Human_head" title="Human head">head</a>, a <a href="/wiki/Stroke" title="Stroke">stroke</a>, or poisoning by a variety of chemicals which can act as <a href="/wiki/Neurotoxin" title="Neurotoxin">neurotoxins</a>, such as <a href="/wiki/Ethanol" title="Ethanol">ethanol alcohol</a>. Infection of the brain, though serious, is rare because of the biological barriers which protect it.</p>
+    <p class="grid-column-3 grid-column-6-m grid-column-12-s">The human brain is also susceptible to <a href="/wiki/Neurodegeneration" title="Neurodegeneration">degenerative disorders</a>, such as <a href="/wiki/Parkinson%27s_disease" title="Parkinson's disease">Parkinson's disease</a>, and <a href="/wiki/Alzheimer%27s_disease" title="Alzheimer's disease">Alzheimer's disease</a>, (mostly as the result of <a href="/wiki/Aging_brain" title="Aging brain">aging</a>) and <a href="/wiki/Multiple_sclerosis" title="Multiple sclerosis">multiple sclerosis</a>A number of <a href="/wiki/Psychiatric_condition" title="Psychiatric condition" class="mw-redirect">psychiatric conditions</a>, such as <a href="/wiki/Schizophrenia" title="Schizophrenia">schizophrenia</a> and <a href="/wiki/Major_depressive_disorder" title="Major depressive disorder">clinical depression</a>, are thought to be associated with brain dysfunctions, although the nature of these is not well understood. The brain can also be the site of <a href="/wiki/Brain_tumors" title="Brain tumors" class="mw-redirect">brain tumors</a> and these can be <a href="/wiki/Benign_tumour" title="Benign tumour" class="mw-redirect">benign</a> or <a href="/wiki/Cancer" title="Cancer">malignant</a>.</p>
+    <p class="grid-column-3 grid-column-6-m grid-column-12-s">There are some techniques for studying the brain that are used in other animals that are just not suitable for use in humans and vice versa. It is easier to obtain individual brain cells taken from other animals, for <a href="/wiki/Histology" title="Histology">study</a>. It is also possible to use invasive techniques in other animals such as inserting electrodes into the brain or disabling certains parts of the brain in order to examine the effects on behaviour – techniques that are not possible to be used in humans.</p>
+    <p class="grid-column-3 grid-column-6-m grid-column-12-s">However, only humans can respond to complex verbal instructions or be of use in the study of important brain functions such as language and other complex cognitive tasks, but studies from humans and from other animals, can be of mutual help. <a href="/wiki/Medical_imaging" title="Medical imaging">Medical imaging</a> technologies such as <a href="/wiki/Functional_neuroimaging" title="Functional neuroimaging">functional neuroimaging</a> and <a href="/wiki/Electroencephalography" title="Electroencephalography">EEG</a> recordings are important techniques in studying the brain. The complete functional understanding of the human brain is an ongoing challenge for <a href="/wiki/Neuroscience" title="Neuroscience">neuroscience</a></p>
   </section>
 
-  <footer class="col-10 wrap footer">
+  <section class="wrap gestures">
+    <ul class="grid-container">
+      <li class="grid-column-4 jump-left-grid-column-1"><img src="images/thinker5.jpg" alt=""/></li>
+      <li class="grid-column-2"><img src="images/thinker1.jpg" alt=""/></li>
+      <li class="grid-column-2"><img src="images/thinker2.jpg" alt=""/></li>
+      <li class="grid-column-2 jump-left-grid-column-2"><img src="images/thinker3.jpg" alt=""/></li>
+      <li class="grid-column-2"><img src="images/thinker4.jpg" alt=""/></li>
+    </ul>
+  </section>
+
+  <footer class="wrap footer">
     <p>Built with &hearts; by Mango</p>
   </footer>
 

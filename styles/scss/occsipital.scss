@@ -1,8 +1,5 @@
-// Grid
-@import "grid/settings/_settings";
-@import "grid/mixins/_mixins";
-@import "grid/columns/_columns";
-@import "grid/visibility/_visibility";
-
-// Mediaqueries
-@import "mediaqueries/_mediaqueries";
+@import "ocssipital/_settings.scss";
+@import "ocssipital/_mixins.scss";
+@import "ocssipital/_columns.scss";
+@import "ocssipital/_visibility.scss";
+@import "ocssipital/_mediaqueries.scss";

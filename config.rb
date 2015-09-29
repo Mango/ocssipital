@@ -7,3 +7,4 @@ output_style = :compressed
 environment = :development
 relative_assets = true
 line_comments = true
+Sass::Script::Number.precision = 8
