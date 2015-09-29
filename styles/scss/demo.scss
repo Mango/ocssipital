@@ -94,6 +94,10 @@ body {font:87.5%/1.75em Courier, monospace; color:#000;}
 
 }
 
+.feature-1 {background:url(../../images/body/body2.jpg) no-repeat 0 0;}
+.feature-2 {background:url(../../images/body/body3.jpg) no-repeat 0 0;}
+.feature-3 {background:url(../../images/body/body4.jpg) no-repeat 0 0;}
+
 .header {text-align:center; padding:8em 0 4em;}
 .header h1 {font-size:4em;}
 .header a, .header a:hover {padding:0; background:none; border-bottom:1px solid;}
@@ -130,6 +134,15 @@ h2 {
   font-size:1.5em;
   line-height:1.25em;
   padding-bottom:2em;
+}
+
+.mainText,
+.secondaryText {
+
+  p {
+    padding:0 2.5em 2em 0;
+  }
+
 }
 
 .lettering {
@@ -171,6 +184,12 @@ h2 {
 }
 
 .secondaryText {
+
+  q {
+    font-size:1.5em;
+    line-height:170%;
+    padding-right:2em;
+  }
 
   p {
     padding-bottom:3em;
@@ -218,18 +237,6 @@ h2 {
   }
 
 }
-
-@include mediaquery(m){
-  .mainText,
-  .secondaryText {
-
-    p {
-      padding:0 2.5em 2em 0;
-    }
-
-  }
-}
-
 .gestures {
 
   ul {
