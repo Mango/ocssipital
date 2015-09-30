@@ -14,7 +14,7 @@ Run SASS on the project folder
 
 ## Usage
 
-Working with Ocssipital is easy. You can see and example below:
+Working with Ocssipital is easy. You can see an example below:
 
 ```html
 <div class="grid-container">
@@ -140,14 +140,14 @@ Changes an element's current column size for a different one.
 ## With ❤ by
 
 - Ignacio Ricci (VP of Product @ Mango)
-- E-mail: [ignacio.ricci@gmail.com](mailto:ignacio.ricci@gmail.com)
-- Twitter: [@ignacioricci](http://twitter.com/ignacioricci)
-- Web: [http://ignacioricci.com](http://ignacioricci.com)
+ - E-mail: [ignacio.ricci@gmail.com](mailto:ignacio.ricci@gmail.com)
+ - Twitter: [@ignacioricci](http://twitter.com/ignacioricci)
+ - Web: [http://ignacioricci.com](http://ignacioricci.com)
 
 - Guille Paz (Front-end developer | Web standards lover)
-- E-mail: [guille87paz@gmail.com](mailto:guille87paz@gmail.com)
-- Twitter: [@pazguille](http://twitter.com/pazguille)
-- Web: [http://pazguille.me](http://pazguille.me)
+ - E-mail: [guille87paz@gmail.com](mailto:guille87paz@gmail.com)
+ - Twitter: [@pazguille](http://twitter.com/pazguille)
+ - Web: [http://pazguille.me](http://pazguille.me)
 
 ## License
 MIT license. Copyright © 2015 [Mango](http://getmango.com).
