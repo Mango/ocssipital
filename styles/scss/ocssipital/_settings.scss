@@ -2,20 +2,28 @@
 /* SETTINGS                              */
 /*---------------------------------------*/
 
-// Flexbox
-$flexbox:false;
+// Enable Flexbox
+$flexbox:true;
 
 // Number of columns
-$column_number:12;
+$column_count:12;
 
 // Column prefix
-$column_prefix: "grid-column";
+$column_prefix:"grid-column";
 
 // Column container name (to clear floats or contain flexboxes)
-$container_name: "grid-container";
+$container_name:"grid-container";
 
-// Debug grid
-$debug:false;
+// Margins for columns (Do not confuse with gutter)
+$gaps:true;
+$gap_prefix:"grid-gap";
+
+// Gutters
+$grid_gutter_unit:"px";
+$grid_gutter_size:0;
 
 // Viewports (size, min-width, max-width)
-$viewports: (s, 0, 639px), (m, 640px, 1024px), (l, 1025px, 1199px), (xl, 1200px, 0);
+$viewports:(s, 0, 639px), (m, 640px, 1024px), (l, 1025px, 1199px), (xl, 1200px, 0);
+
+// For debugging purposes
+$debug:false;
