@@ -22,8 +22,8 @@ $gap_prefix:"grid-gap";
 $grid_gutter_unit:"px";
 $grid_gutter_size:0;
 
-// Viewports (size, min-width, max-width)
-$viewports:(s, 0, 639px), (m, 640px, 1024px), (l, 1025px, 1199px), (xl, 1200px, 0);
+// Viewports (size, min-width, max-width, create columns for that viewport or not)
+$viewports:(s, 0, 639px, true), (m, 640px, 1024px, true), (l, 1025px, 1199px, true), (xl, 1200px, 0, true);
 
 // For debugging purposes
 $debug:false;

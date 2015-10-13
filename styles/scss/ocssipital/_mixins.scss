@@ -30,22 +30,25 @@
     $viewport_label: nth($viewport, 1);
     $viewport_min_size : nth($viewport, 2);
     $viewport_max_size : nth($viewport, 3);
+    $viewport_columns : nth($viewport, 4);
     @if ($viewport_min_size != 0 and $viewport_max_size == 0) {
       @media only screen and (min-width:$viewport_min_size) {
-        @for $index from 1 through $column_count {
-          .#{$column_prefix}-#{$index}-#{$viewport_label}{
-            @if ($flexbox == true){
-              flex:0 0 percentage(($index / $column_count));
+        @if ($viewport_columns == true){
+          @for $index from 1 through $column_count {
+            .#{$column_prefix}-#{$index}-#{$viewport_label}{
+              @if ($flexbox == true){
+                flex:0 0 percentage(($index / $column_count));
+              }
+              @else {
+                width:percentage(($index / $column_count));
+              }
             }
-            @else {
-              width:percentage(($index / $column_count));
+            .#{$gap_prefix}-left-#{$index}{
+              margin-left:percentage(($index / $column_count));
             }
-          }
-          .#{$gap_prefix}-left-#{$index}{
-            margin-left:percentage(($index / $column_count));
-          }
-          .#{$gap_prefix}-right-#{$index}{
-            margin-right:percentage(($index / $column_count));
+            .#{$gap_prefix}-right-#{$index}{
+              margin-right:percentage(($index / $column_count));
+            }
           }
         }
         .visible-#{$viewport_label}{
@@ -55,20 +58,22 @@
     }
     @else if ($viewport_min_size == 0 and $viewport_max_size != 0) {
       @media only screen and (max-width:$viewport_max_size) {
-        @for $index from 1 through $column_count {
-          .#{$column_prefix}-#{$index}-#{$viewport_label}{
-            @if ($flexbox == true){
-              flex:0 0 percentage(($index / $column_count));
+        @if ($viewport_columns == true){
+          @for $index from 1 through $column_count {
+            .#{$column_prefix}-#{$index}-#{$viewport_label}{
+              @if ($flexbox == true){
+                flex:0 0 percentage(($index / $column_count));
+              }
+              @else {
+                width:percentage(($index / $column_count));
+              }
             }
-            @else {
-              width:percentage(($index / $column_count));
+            .#{$gap_prefix}-left-#{$index}{
+              margin-left:percentage(($index / $column_count));
             }
-          }
-          .#{$gap_prefix}-left-#{$index}{
-            margin-left:percentage(($index / $column_count));
-          }
-          .#{$gap_prefix}-right-#{$index}{
-            margin-right:percentage(($index / $column_count));
+            .#{$gap_prefix}-right-#{$index}{
+              margin-right:percentage(($index / $column_count));
+            }
           }
         }
         .visible-#{$viewport_label}{
@@ -78,20 +83,22 @@
     }
     @else {
       @media only screen and (min-width:$viewport_min_size) and (max-width:$viewport_max_size) {
-        @for $index from 1 through $column_count {
-          .#{$column_prefix}-#{$index}-#{$viewport_label}{
-            @if ($flexbox == true){
-              flex:0 0 percentage(($index / $column_count));
+        @if ($viewport_columns == true){
+          @for $index from 1 through $column_count {
+            .#{$column_prefix}-#{$index}-#{$viewport_label}{
+              @if ($flexbox == true){
+                flex:0 0 percentage(($index / $column_count));
+              }
+              @else {
+                width:percentage(($index / $column_count));
+              }
             }
-            @else {
-              width:percentage(($index / $column_count));
+            .#{$gap_prefix}-left-#{$index}{
+              margin-left:percentage(($index / $column_count));
             }
-          }
-          .#{$gap_prefix}-left-#{$index}{
-            margin-left:percentage(($index / $column_count));
-          }
-          .#{$gap_prefix}-right-#{$index}{
-            margin-right:percentage(($index / $column_count));
+            .#{$gap_prefix}-right-#{$index}{
+              margin-right:percentage(($index / $column_count));
+            }
           }
         }
         .visible-#{$viewport_label}{
