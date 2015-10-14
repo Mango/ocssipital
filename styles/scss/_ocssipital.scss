@@ -1,0 +1,244 @@
+
+/*
+
+  Ocssipital
+  A grid creation boilerplate for SASS
+  https://github.com/Mango/ocssipital
+
+  Include this file on your SASS project to build your grid :)
+
+*/
+
+/*-----------------------------------------------------------------------*/
+/* SETTINGS                                                              */
+/*-----------------------------------------------------------------------*/
+
+  // Enable Flexbox
+  $flexbox:true;
+
+  // Number of columns
+  $column_count:12;
+
+  // Column prefix
+  $column_prefix:"grid-column";
+
+  // Column container name (to clear floats or contain flexboxes)
+  $container_name:"grid-container";
+
+  // Margins for columns (Do not confuse with gutter)
+  $gaps:true;
+  $gap_prefix:"grid-gap";
+
+  // Gutters
+  $grid_gutter_unit:"px";
+  $grid_gutter_size:0;
+
+  // Viewports (size, min-width, max-width, create columns for that viewport or not)
+  $viewports:(s, 0, 639px, true), (m, 640px, 1024px, true), (l, 1025px, 1199px, true), (xl, 1200px, 0, true);
+
+  // For debugging purposes
+  $debug:false;
+
+/*-----------------------------------------------------------------------*/
+/* MIXINS                                                                */
+/*-----------------------------------------------------------------------*/
+
+  @mixin changecol($colsize){
+    width:percentage(($colsize / $column_count));
+  }
+
+  @mixin mediaquery($size) {
+    @each $viewport in $viewports {
+      $viewport_label: nth($viewport, 1);
+      $viewport_min_size : nth($viewport, 2);
+      $viewport_max_size : nth($viewport, 3);
+      @if ($viewport_label == $size){
+        @if ($viewport_min_size != 0 and $viewport_max_size == 0) {
+          @media only screen and (min-width:$viewport_min_size) { @content; }
+        }
+        @else if ($viewport_min_size == 0 and $viewport_max_size != 0) {
+          @media only screen and (max-width:$viewport_max_size) { @content; }
+        }
+        @else {
+          @media only screen and (min-width:$viewport_min_size) and (max-width:$viewport_max_size) { @content; }
+        }
+      }
+    }
+  }
+
+  @mixin create_mediaqueries() {
+    @each $viewport in $viewports {
+      $viewport_label: nth($viewport, 1);
+      $viewport_min_size : nth($viewport, 2);
+      $viewport_max_size : nth($viewport, 3);
+      $viewport_columns : nth($viewport, 4);
+      @if ($viewport_min_size != 0 and $viewport_max_size == 0) {
+        @media only screen and (min-width:$viewport_min_size) {
+          @if ($viewport_columns == true){
+            @for $index from 1 through $column_count {
+              .#{$column_prefix}-#{$index}-#{$viewport_label}{
+                @if ($flexbox == true){
+                  flex:0 0 percentage(($index / $column_count));
+                }
+                @else {
+                  width:percentage(($index / $column_count));
+                }
+              }
+              .#{$gap_prefix}-left-#{$index}{
+                margin-left:percentage(($index / $column_count));
+              }
+              .#{$gap_prefix}-right-#{$index}{
+                margin-right:percentage(($index / $column_count));
+              }
+            }
+          }
+          .visible-#{$viewport_label}{
+            display:block;
+          }
+        }
+      }
+      @else if ($viewport_min_size == 0 and $viewport_max_size != 0) {
+        @media only screen and (max-width:$viewport_max_size) {
+          @if ($viewport_columns == true){
+            @for $index from 1 through $column_count {
+              .#{$column_prefix}-#{$index}-#{$viewport_label}{
+                @if ($flexbox == true){
+                  flex:0 0 percentage(($index / $column_count));
+                }
+                @else {
+                  width:percentage(($index / $column_count));
+                }
+              }
+              .#{$gap_prefix}-left-#{$index}{
+                margin-left:percentage(($index / $column_count));
+              }
+              .#{$gap_prefix}-right-#{$index}{
+                margin-right:percentage(($index / $column_count));
+              }
+            }
+          }
+          .visible-#{$viewport_label}{
+            display:block;
+          }
+        }
+      }
+      @else {
+        @media only screen and (min-width:$viewport_min_size) and (max-width:$viewport_max_size) {
+          @if ($viewport_columns == true){
+            @for $index from 1 through $column_count {
+              .#{$column_prefix}-#{$index}-#{$viewport_label}{
+                @if ($flexbox == true){
+                  flex:0 0 percentage(($index / $column_count));
+                }
+                @else {
+                  width:percentage(($index / $column_count));
+                }
+              }
+              .#{$gap_prefix}-left-#{$index}{
+                margin-left:percentage(($index / $column_count));
+              }
+              .#{$gap_prefix}-right-#{$index}{
+                margin-right:percentage(($index / $column_count));
+              }
+            }
+          }
+          .visible-#{$viewport_label}{
+            display:block;
+          }
+        }
+      }
+    }
+  }
+
+/*-----------------------------------------------------------------------*/
+/* COLUMNS                                                               */
+/*-----------------------------------------------------------------------*/
+
+  @if ($flexbox == true){
+    .#{$container_name}{
+      display:-webkit-box;
+      display:-moz-box;
+      display:-ms-flexbox;
+      display:-webkit-flex;
+      display:flex;
+      flex-flow:row wrap;
+      justify-content:flex-start;
+      align-items:flex-start;
+      align-content:flex-start;
+    }
+  }
+  @else {
+    .#{$container_name}:after {
+      visibility:hidden;
+      display:block;
+      content:" ";
+      clear:both;
+      height:0;
+    }
+  }
+
+  [class|="#{$column_prefix}"] {
+
+    @if ($flexbox == true){
+      align-self:flex-start;
+      flex:none;
+    }
+    @else {
+      float:left;
+    }
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+
+    @if ($grid_gutter_size > 0 and $grid_gutter_unit == "px"){
+      padding:0 #{($grid_gutter_size / 2)}px;
+    }
+
+    @if ($debug == true){
+      box-shadow:0 0 0 1px red inset;
+    }
+
+  }
+
+  // Column generator
+  @for $index from 1 through $column_count {
+    .#{$column_prefix}-#{$index}{   
+      @if ($flexbox == true){
+        flex:0 0 percentage(($index / $column_count));
+      }
+      @else {
+        width:percentage(($index / $column_count));
+      }
+      @if ($debug == true and $grid_gutter_size > 0 and $grid_gutter_unit == "px"){
+        box-shadow:0 0 0 1px red inset, 0 0 0 #{($grid_gutter_size / 2)}px lime inset;
+      }
+    }
+    .#{$gap_prefix}-left-#{$index}{
+      margin-left:percentage(($index / $column_count));
+    }
+    .#{$gap_prefix}-right-#{$index}{
+      margin-right:percentage(($index / $column_count));
+    }
+  }
+
+/*-----------------------------------------------------------------------*/
+/* VISIBILITY                                                            */
+/*-----------------------------------------------------------------------*/
+
+  // Use these clases to show or hide elements according to the viewport
+
+  %displaynone {
+    display:none;
+  }
+
+  @each $viewport in $viewports {
+    .visible-#{nth($viewport, 1)}{
+      @extend %displaynone;
+    }
+  }
+
+/*-----------------------------------------------------------------------*/
+/* MEDIAQUERIES                                                          */
+/*-----------------------------------------------------------------------*/
+
+  @include create_mediaqueries();

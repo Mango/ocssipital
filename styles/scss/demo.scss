@@ -1,10 +1,3 @@
-/*- Imports ----------------------------------------------------------------*/
-
-  @import "ocssipital/_settings.scss";
-  @import "ocssipital/_mixins.scss";
-
-/*-----------------------------------------------------------------------------------------------*/
-
 /*- Reset ------------------------------------------------------------------*/
 
   html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, 
@@ -17,6 +10,12 @@
   table {border-collapse:collapse; border-spacing:0;}
   input, textarea, button {font-family:inherit; font-size:1em;}
   textarea {overflow:auto;}
+
+/*-----------------------------------------------------------------------------------------------*/
+
+/*- Imports ----------------------------------------------------------------*/
+
+  @import "_ocssipital.scss";
 
 /*-----------------------------------------------------------------------------------------------*/
 
@@ -86,7 +85,7 @@
     float:none;
     padding:3em 0;
     margin:0 auto;
-    max-width:1400px;
+    max-width:1240px;
   }
 
 /*-----------------------------------------------------------------------------------------------*/
@@ -129,7 +128,7 @@
     padding:3em 2.5em;
     position:relative;
     text-shadow:1px 1px 3px rgba(0,0,0,0.4);
-    min-height:450px;
+    min-height:460px;
     background-color:#555;
     background-size:cover;
   }
@@ -284,6 +283,10 @@
         opacity:1;
       }
 
+    }
+
+    .grid-gap-left-5 {
+      clear:left;
     }
 
   }
