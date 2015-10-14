@@ -14,7 +14,7 @@
 /*-----------------------------------------------------------------------*/
 
   // Enable Flexbox
-  $flexbox:true;
+  $flexbox:false;
 
   // Number of columns
   $column_count:12;
@@ -34,7 +34,7 @@
   $grid_gutter_size:0;
 
   // Viewports (size, min-width, max-width, create columns for that viewport or not)
-  $viewports:(s, 0, 639px, true), (m, 640px, 1024px, true), (l, 1025px, 1199px, true), (xl, 1200px, 0, true);
+  $viewports:(s, 0, 520px, true), (sm, 0, 799px, false), (m, 521px, 799px, true), (l, 800px, 0, true);
 
   // For debugging purposes
   $debug:false;
@@ -84,11 +84,13 @@
                   width:percentage(($index / $column_count));
                 }
               }
-              .#{$gap_prefix}-left-#{$index}{
-                margin-left:percentage(($index / $column_count));
-              }
-              .#{$gap_prefix}-right-#{$index}{
-                margin-right:percentage(($index / $column_count));
+              @if ($gaps == true){
+                .#{$gap_prefix}-left-#{$index}{
+                  margin-left:percentage(($index / $column_count));
+                }
+                .#{$gap_prefix}-right-#{$index}{
+                  margin-right:percentage(($index / $column_count));
+                }
               }
             }
           }
@@ -109,11 +111,13 @@
                   width:percentage(($index / $column_count));
                 }
               }
-              .#{$gap_prefix}-left-#{$index}{
-                margin-left:percentage(($index / $column_count));
-              }
-              .#{$gap_prefix}-right-#{$index}{
-                margin-right:percentage(($index / $column_count));
+              @if ($gaps == true){
+                .#{$gap_prefix}-left-#{$index}{
+                  margin-left:percentage(($index / $column_count));
+                }
+                .#{$gap_prefix}-right-#{$index}{
+                  margin-right:percentage(($index / $column_count));
+                }
               }
             }
           }
@@ -134,11 +138,13 @@
                   width:percentage(($index / $column_count));
                 }
               }
-              .#{$gap_prefix}-left-#{$index}{
-                margin-left:percentage(($index / $column_count));
-              }
-              .#{$gap_prefix}-right-#{$index}{
-                margin-right:percentage(($index / $column_count));
+              @if ($gaps == true){
+                .#{$gap_prefix}-left-#{$index}{
+                  margin-left:percentage(($index / $column_count));
+                }
+                .#{$gap_prefix}-right-#{$index}{
+                  margin-right:percentage(($index / $column_count));
+                }
               }
             }
           }
@@ -177,7 +183,7 @@
     }
   }
 
-  [class|="#{$column_prefix}"] {
+  [class*="#{$column_prefix}"] {
 
     @if ($flexbox == true){
       align-self:flex-start;
@@ -213,11 +219,13 @@
         box-shadow:0 0 0 1px red inset, 0 0 0 #{($grid_gutter_size / 2)}px lime inset;
       }
     }
-    .#{$gap_prefix}-left-#{$index}{
-      margin-left:percentage(($index / $column_count));
-    }
-    .#{$gap_prefix}-right-#{$index}{
-      margin-right:percentage(($index / $column_count));
+    @if ($gaps == true){
+      .#{$gap_prefix}-left-#{$index}{
+        margin-left:percentage(($index / $column_count));
+      }
+      .#{$gap_prefix}-right-#{$index}{
+        margin-right:percentage(($index / $column_count));
+      }
     }
   }
 

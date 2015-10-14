@@ -27,7 +27,7 @@
     background:url(../../images/bg.jpg) repeat 0 0;
   }
 
-  [class|="grid-column"]{
+  [class*="grid-column"]{
     padding:0 10px;
   }
 
