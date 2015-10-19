@@ -33,8 +33,8 @@
   $grid_gutter_unit:"px";
   $grid_gutter_size:0;
 
-  // Viewports (size, min-width, max-width, create columns for that viewport or not)
-  $viewports:(s, 0, 520px, true), (sm, 0, 799px, false), (m, 521px, 799px, true), (l, 800px, 0, true);
+  // Viewports (size, min-width, max-width, create grid styles for that viewport or not)
+  $viewports:(s, 0, 520px, true), (m, 521px, 799px, true), (l, 800px, 0, true);
 
   // For debugging purposes
   $debug:false;
@@ -85,17 +85,17 @@
                 }
               }
               @if ($gaps == true){
-                .#{$gap_prefix}-left-#{$index}{
+                .#{$gap_prefix}-left-#{$index}-#{$viewport_label}{
                   margin-left:percentage(($index / $column_count));
                 }
-                .#{$gap_prefix}-right-#{$index}{
+                .#{$gap_prefix}-right-#{$index}-#{$viewport_label}{
                   margin-right:percentage(($index / $column_count));
                 }
               }
             }
-          }
-          .visible-#{$viewport_label}{
-            display:block;
+            .visible-#{$viewport_label}{
+              display:block;
+            }
           }
         }
       }
@@ -112,17 +112,17 @@
                 }
               }
               @if ($gaps == true){
-                .#{$gap_prefix}-left-#{$index}{
+                .#{$gap_prefix}-left-#{$index}-#{$viewport_label}{
                   margin-left:percentage(($index / $column_count));
                 }
-                .#{$gap_prefix}-right-#{$index}{
+                .#{$gap_prefix}-right-#{$index}-#{$viewport_label}{
                   margin-right:percentage(($index / $column_count));
                 }
               }
             }
-          }
-          .visible-#{$viewport_label}{
-            display:block;
+            .visible-#{$viewport_label}{
+              display:block;
+            }
           }
         }
       }
@@ -139,17 +139,17 @@
                 }
               }
               @if ($gaps == true){
-                .#{$gap_prefix}-left-#{$index}{
+                .#{$gap_prefix}-left-#{$index}-#{$viewport_label}{
                   margin-left:percentage(($index / $column_count));
                 }
-                .#{$gap_prefix}-right-#{$index}{
+                .#{$gap_prefix}-right-#{$index}-#{$viewport_label}{
                   margin-right:percentage(($index / $column_count));
                 }
               }
             }
-          }
-          .visible-#{$viewport_label}{
-            display:block;
+            .visible-#{$viewport_label}{
+              display:block;
+            }
           }
         }
       }

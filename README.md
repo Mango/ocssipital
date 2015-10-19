@@ -77,14 +77,14 @@ $container_name:"grid-container";
 ```
 
 #### Viewports (Array)
-Defines your website viewports and breakpoints. By default: s, m, l, xl.
+Defines your website viewports and breakpoints. By default: s, m, l.
 
 ```css
-$viewports:(s, 0, 639px, true), (m, 640px, 1024px, true), (l, 1025px, 1199px, true), (xl, 1200px, 0, true);
+$viewports:(s, 0, 520px, true), (m, 521px, 799px, true), (l, 800px, 0, true);
 ```
 
 You can change the viewport name and min/max widths.
-Use the last boolean parameter to create columns for that viewport or not.
+Use the last boolean parameter to create grid styles for that viewport or not.
 
 #### Debugging (Boolean)
 Highlights all columns to be able to debug the layout. By default: false.
