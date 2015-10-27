@@ -1,165 +1,131 @@
-
+/*-----------------------------------------------------------------------*/
 /*
 
   Ocssipital
   A grid creation boilerplate for SASS
   https://github.com/Mango/ocssipital
 
-  Include this file on your SASS project to build your grid :)
+  Include this file on your SASS project to build the grid system :)
 
 */
+/*-----------------------------------------------------------------------*/
+
+  $settings:(
+    columns: (
+      count:12,
+      prefix:"grid-column",
+      flexbox:true,
+      debug:false
+    ),
+    container: (
+      enable:true,
+      name:"grid-container"
+    ),
+    gaps:(
+      enable:true,
+      prefix:"grid-gap"
+    ),
+    gutter:(
+      enable:true,
+      unit:"px",
+      size:0
+    ),
+    mediaqueries:(
+      enable:true
+    ),  
+    viewports:(
+      s: (
+        max-width:520px,
+        create_columns:true
+      ),
+      m: (
+        max-width:1000px,
+        create_columns:true
+      ),
+      l: (
+        min-width:1001px,
+        create_columns:true
+      ),
+      retina: (
+        high-resolution:true,
+        create_columns:false
+      )
+    )
+  );
 
 /*-----------------------------------------------------------------------*/
-/* SETTINGS                                                              */
+/*
+
+  WARNING:
+  The code below is used to build the grid system according
+  your settings. Editing is not necessary. Touch at your own risk.
+
+*/
 /*-----------------------------------------------------------------------*/
+
+/*--------------------*/
+/* PARSE SASS MAP     */
+/*--------------------*/
+
+  @function map-deep-get($map, $keys, $subkey){
+    $deepmap:map-get(map-get($map, $keys), $subkey);
+    @return $deepmap;
+  }
+
+/*--------------------*/
+/* VARIABLES          */
+/*--------------------*/
 
   // Enable Flexbox
-  $flexbox:true;
+  $flexbox:map-deep-get($settings, 'columns', 'flexbox');
 
   // Number of columns
-  $column_count:12;
+  $column_count:map-deep-get($settings, 'columns', 'count');
 
   // Column prefix
-  $column_prefix:"grid-column";
+  $column_prefix:map-deep-get($settings, 'columns', 'prefix');
 
   // Column container name (to clear floats or contain flexboxes)
-  $container_name:"grid-container";
+  $container_name:map-deep-get($settings, 'container', 'name');
 
   // Margins for columns (Do not confuse with gutter)
-  $gaps:true;
-  $gap_prefix:"grid-gap";
+  $gaps:map-deep-get($settings, 'gaps', 'enable');
+  $gap_prefix:map-deep-get($settings, 'gaps', 'prefix');
 
   // Gutters
-  $grid_gutter_unit:"px";
-  $grid_gutter_size:0;
+  $gutter:map-deep-get($settings, 'gutter', 'enable');
+  $grid_gutter_unit:map-deep-get($settings, 'gutter', 'unit');
+  $grid_gutter_size:map-deep-get($settings, 'gutter', 'size');
 
-  // Viewports (size, min-width, max-width, create grid styles for that viewport or not)
-  $viewports:(s, 0, 520px, true), (m, 521px, 799px, true), (l, 800px, 0, true);
+  // Mediqueries and viewports
+  $mediaqueries:map-deep-get($settings, 'mediaqueries', 'enable');
+  $viewports:map-get($settings, 'viewports');
 
   // For debugging purposes
-  $debug:false;
+  $debug:map-deep-get($settings, 'columns', 'debug');
 
-/*-----------------------------------------------------------------------*/
-/* MIXINS                                                                */
-/*-----------------------------------------------------------------------*/
+/*--------------------*/
+/* VIEW LIMIT         */
+/*--------------------*/
 
-  @mixin changecol($colsize){
-    width:percentage(($colsize / $column_count));
-  }
-
-  @mixin mediaquery($size) {
-    @each $viewport in $viewports {
-      $viewport_label: nth($viewport, 1);
-      $viewport_min_size : nth($viewport, 2);
-      $viewport_max_size : nth($viewport, 3);
-      @if ($viewport_label == $size){
-        @if ($viewport_min_size != 0 and $viewport_max_size == 0) {
-          @media only screen and (min-width:$viewport_min_size) { @content; }
-        }
-        @else if ($viewport_min_size == 0 and $viewport_max_size != 0) {
-          @media only screen and (max-width:$viewport_max_size) { @content; }
-        }
-        @else {
-          @media only screen and (min-width:$viewport_min_size) and (max-width:$viewport_max_size) { @content; }
-        }
-      }
+  @function get_view_limit($size, $limit){
+    $view_limit:map-deep-get($viewports, $size, $limit);
+    @if ($view_limit != null and $limit != 'high-resolution'){
+      @return 'and (#{$limit}:#{$view_limit})';
+    }
+    @else if ($limit == 'high-resolution' and $view_limit == true){
+      @return 'and (-webkit-min-device-pixel-ratio:2), only screen and (min--moz-device-pixel-ratio:2), only screen and (-o-min-device-pixel-ratio:2/1), only screen and (min-device-pixel-ratio:2), only screen and (min-resolution:192dpi), only screen and (min-resolution:2dppx)';
+    }
+    @else {
+      @return '';
     }
   }
 
-  @mixin create_mediaqueries() {
-    @each $viewport in $viewports {
-      $viewport_label: nth($viewport, 1);
-      $viewport_min_size : nth($viewport, 2);
-      $viewport_max_size : nth($viewport, 3);
-      $viewport_columns : nth($viewport, 4);
-      @if ($viewport_min_size != 0 and $viewport_max_size == 0) {
-        @media only screen and (min-width:$viewport_min_size) {
-          @if ($viewport_columns == true){
-            @for $index from 1 through $column_count {
-              .#{$column_prefix}-#{$index}-#{$viewport_label}{
-                @if ($flexbox == true){
-                  flex:0 0 percentage(($index / $column_count));
-                }
-                @else {
-                  width:percentage(($index / $column_count));
-                }
-              }
-              @if ($gaps == true){
-                .#{$gap_prefix}-left-#{$index}-#{$viewport_label}{
-                  margin-left:percentage(($index / $column_count));
-                }
-                .#{$gap_prefix}-right-#{$index}-#{$viewport_label}{
-                  margin-right:percentage(($index / $column_count));
-                }
-              }
-            }
-            .visible-#{$viewport_label}{
-              display:block;
-            }
-          }
-        }
-      }
-      @else if ($viewport_min_size == 0 and $viewport_max_size != 0) {
-        @media only screen and (max-width:$viewport_max_size) {
-          @if ($viewport_columns == true){
-            @for $index from 1 through $column_count {
-              .#{$column_prefix}-#{$index}-#{$viewport_label}{
-                @if ($flexbox == true){
-                  flex:0 0 percentage(($index / $column_count));
-                }
-                @else {
-                  width:percentage(($index / $column_count));
-                }
-              }
-              @if ($gaps == true){
-                .#{$gap_prefix}-left-#{$index}-#{$viewport_label}{
-                  margin-left:percentage(($index / $column_count));
-                }
-                .#{$gap_prefix}-right-#{$index}-#{$viewport_label}{
-                  margin-right:percentage(($index / $column_count));
-                }
-              }
-            }
-            .visible-#{$viewport_label}{
-              display:block;
-            }
-          }
-        }
-      }
-      @else {
-        @media only screen and (min-width:$viewport_min_size) and (max-width:$viewport_max_size) {
-          @if ($viewport_columns == true){
-            @for $index from 1 through $column_count {
-              .#{$column_prefix}-#{$index}-#{$viewport_label}{
-                @if ($flexbox == true){
-                  flex:0 0 percentage(($index / $column_count));
-                }
-                @else {
-                  width:percentage(($index / $column_count));
-                }
-              }
-              @if ($gaps == true){
-                .#{$gap_prefix}-left-#{$index}-#{$viewport_label}{
-                  margin-left:percentage(($index / $column_count));
-                }
-                .#{$gap_prefix}-right-#{$index}-#{$viewport_label}{
-                  margin-right:percentage(($index / $column_count));
-                }
-              }
-            }
-            .visible-#{$viewport_label}{
-              display:block;
-            }
-          }
-        }
-      }
-    }
-  }
-
-/*-----------------------------------------------------------------------*/
-/* COLUMNS                                                               */
-/*-----------------------------------------------------------------------*/
-
+/*--------------------*/
+/* COLUMNS            */
+/*--------------------*/
+  
+  // Flexbox or float container
   @if ($flexbox == true){
     .#{$container_name}{
       display:-webkit-box;
@@ -185,6 +151,7 @@
 
   [class*="#{$column_prefix}"] {
 
+    // Flexbox or float column
     @if ($flexbox == true){
       align-self:flex-start;
       flex:none;
@@ -196,10 +163,14 @@
     -moz-box-sizing:border-box;
     box-sizing:border-box;
 
-    @if ($grid_gutter_size > 0 and $grid_gutter_unit == "px"){
-      padding:0 #{($grid_gutter_size / 2)}px;
+    // Gutter
+    @if ($gutter == true){
+      @if ($grid_gutter_size > 0 and $grid_gutter_unit == "px"){
+        padding:0 #{($grid_gutter_size / 2)}px;
+      }
     }
 
+    // Debug
     @if ($debug == true){
       box-shadow:0 0 0 1px red inset;
     }
@@ -229,24 +200,84 @@
     }
   }
 
-/*-----------------------------------------------------------------------*/
-/* VISIBILITY                                                            */
-/*-----------------------------------------------------------------------*/
-
-  // Use these clases to show or hide elements according to the viewport
-
+  // Display none placeholder
   %displaynone {
     display:none;
   }
 
-  @each $viewport in $viewports {
-    .visible-#{nth($viewport, 1)}{
-      @extend %displaynone;
-    }
+/*--------------------*/
+/* MIXINS             */
+/*--------------------*/
+
+  // Change column size
+  @mixin changecol($colsize){
+    width:percentage(($colsize / $column_count));
   }
 
-/*-----------------------------------------------------------------------*/
-/* MEDIAQUERIES                                                          */
-/*-----------------------------------------------------------------------*/
+  // External mediaquery
+  @mixin mediaquery($size) {
 
-  @include create_mediaqueries();
+    @each $v, $map in $viewports {
+
+      $media:"only screen #{get_view_limit($v, 'min-width')} #{get_view_limit($v, 'max-width')} #{get_view_limit($v, 'min-height')} #{get_view_limit($v, 'max-height')} #{get_view_limit($v, 'high-resolution')} #{get_view_limit($v, 'orientation')}";
+      $create_columns:map-deep-get($viewports, $v, 'create_columns');
+
+      @media #{$media} {
+        @if ($create_columns == true){
+          @content;
+        }
+      }
+
+    }
+
+  }
+
+  // Create mediaqueries
+  @mixin create_mediaqueries(){
+
+    // Iterate viewports
+    @each $v, $map in $viewports {
+
+      $media:"only screen #{get_view_limit($v, 'min-width')} #{get_view_limit($v, 'max-width')} #{get_view_limit($v, 'min-height')} #{get_view_limit($v, 'max-height')} #{get_view_limit($v, 'high-resolution')} #{get_view_limit($v, 'orientation')}";
+      $create_columns:map-deep-get($viewports, $v, 'create_columns');
+
+      .visible-#{$v}{
+        @extend %displaynone;
+      }
+
+      @media #{$media} {
+        @if ($create_columns == true){
+          @for $index from 1 through $column_count {
+            .#{$column_prefix}-#{$index}-#{$v}{
+              @if ($flexbox == true){
+                flex:0 0 percentage(($index / $column_count));
+              }
+              @else {
+                width:percentage(($index / $column_count));
+              }
+            }
+            @if ($gaps == true){
+              .#{$gap_prefix}-left-#{$index}-#{$v}{
+                margin-left:percentage(($index / $column_count));
+              }
+              .#{$gap_prefix}-right-#{$index}-#{$v}{
+                margin-right:percentage(($index / $column_count));
+              }
+            }
+          }
+          .visible-#{$v}{
+            display:block;
+          }
+        }
+        @else {
+          p{color:red;}
+        }
+      }
+
+    }
+
+  }
+
+  @if ($mediaqueries == true){
+    @include create_mediaqueries();
+  }
