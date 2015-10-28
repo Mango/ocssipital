@@ -276,7 +276,7 @@
               }
             }
           }
-          .visible-#{$v}{
+          .#{$visibility_prefix}-#{$v}{
             display:block;
           }
         }
