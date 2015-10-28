@@ -30,9 +30,13 @@
       unit:"px",
       size:0
     ),
+    visibility:(
+      enable:true,
+      prefix: "grid-visible"
+    ),
     mediaqueries:(
       enable:true
-    ),  
+    ),
     viewports:(
       s: (
         max-width:520px,
@@ -47,8 +51,7 @@
         create_columns:true
       ),
       retina: (
-        high-resolution:true,
-        create_columns:false
+        high-resolution:true
       )
     )
   );
@@ -96,6 +99,10 @@
   $gutter:map-deep-get($settings, 'gutter', 'enable');
   $grid_gutter_unit:map-deep-get($settings, 'gutter', 'unit');
   $grid_gutter_size:map-deep-get($settings, 'gutter', 'size');
+
+  // Visibility
+  $visibility: map-deep-get($settings, 'visibility', 'enable');
+  $visibility_prefix: map-deep-get($settings, 'visibility', 'prefix');
 
   // Mediqueries and viewports
   $mediaqueries:map-deep-get($settings, 'mediaqueries', 'enable');
@@ -200,9 +207,11 @@
     }
   }
 
-  // Display none placeholder
-  %displaynone {
-    display:none;
+  @if ($visibility == true){
+    // Display none placeholder
+    %displaynone {
+      display:none;
+    }
   }
 
 /*--------------------*/
@@ -241,8 +250,10 @@
       $media:"only screen #{get_view_limit($v, 'min-width')} #{get_view_limit($v, 'max-width')} #{get_view_limit($v, 'min-height')} #{get_view_limit($v, 'max-height')} #{get_view_limit($v, 'high-resolution')} #{get_view_limit($v, 'orientation')}";
       $create_columns:map-deep-get($viewports, $v, 'create_columns');
 
-      .visible-#{$v}{
-        @extend %displaynone;
+      @if ($visibility == true){
+        .#{$visibility_prefix}-#{$v}{
+          @extend %displaynone;
+        }
       }
 
       @media #{$media} {
@@ -268,9 +279,6 @@
           .visible-#{$v}{
             display:block;
           }
-        }
-        @else {
-          p{color:red;}
         }
       }
 
