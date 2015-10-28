@@ -26,6 +26,7 @@ function renderSass(){
   // Get CSS
   sass.render({
     file: data.input_name,
+    precision: 8,
     outputStyle: outputStyle
   }, function(err, css) {
     if (err){
