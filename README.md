@@ -155,7 +155,7 @@ $settings:(
 
 ### Changing prefixes
 
-If you change, for example, the column prefix from *"grid-column"* to **"col"**, you can laster use in your HTML:
+If you change, for example, the column prefix from *"grid-column"* to **"col"**, you can later use in your HTML:
 
 ```html      
 <div class="grid-container">
