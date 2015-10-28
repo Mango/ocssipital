@@ -70,9 +70,9 @@ If you wish to show/hide elements according to the viewport, you can use visibil
 </div>
 ```
 
-# SASS Settings
+# Customization
 
-### Default
+### SASS settings
 
 ```sass  
 $settings:(
@@ -121,7 +121,7 @@ $settings:(
   );
 ```
 
-### Customization
+### SASS settings customization
 
 - columns
   - `count`**(int)** the amount of columns
@@ -151,6 +151,13 @@ $settings:(
     - `max-height`: **(string)** the max-height value for the viewport's mediaquery.
     - `high-resolution`:  **(boolean)** if true, adds retina display and high-pixel density values to the viewport's mediaquery.
     - `create_columns`: **(boolean)** if true, creates columns for the current viewport. If set to *false*, the viewport will still be accesible for the *mediaquery() sass mixin*, but columns won't be created.
+
+### Compiling ocssipital with your own settings 
+In the command line, run:
+```       
+node generator.js
+```
+That will compile **styles/scss/ocssipital.scss** into **styles/css/ocssipital.css**
 
 # SASS Mixins
 
