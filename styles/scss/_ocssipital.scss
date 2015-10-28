@@ -1,0 +1,286 @@
+/*-----------------------------------------------------------------------*/
+/*
+
+  Ocssipital
+  A grid creation boilerplate for SASS
+  https://github.com/Mango/ocssipital
+
+  Include this file on your SASS project to build the grid system :)
+
+*/
+/*-----------------------------------------------------------------------*/
+
+  $settings:(
+    columns: (
+      count:12,
+      prefix:"grid-column",
+      flexbox:true,
+      debug:false
+    ),
+    container: (
+      enable:true,
+      name:"grid-container"
+    ),
+    gaps:(
+      enable:true,
+      prefix:"grid-gap"
+    ),
+    gutter:(
+      enable:true,
+      unit:"px",
+      size:10
+    ),
+    visibility:(
+      enable:true,
+      prefix: "grid-visible"
+    ),
+    mediaqueries:(
+      enable:true
+    ),
+    viewports:(
+      s: (
+        max-width:520px,
+        create_columns:true
+      ),
+      m: (
+        min-width:521px,
+        max-width:999px,
+        create_columns:true
+      ),
+      l: (
+        min-width:1000px,
+        create_columns:true
+      )
+    )
+  );
+
+/*-----------------------------------------------------------------------*/
+/*
+
+  WARNING:
+  The code below is used to build the grid system according
+  your settings. Editing is not necessary. Touch at your own risk.
+
+*/
+/*-----------------------------------------------------------------------*/
+
+/*--------------------*/
+/* PARSE SASS MAP     */
+/*--------------------*/
+
+  @function map-deep-get($map, $keys, $subkey){
+    $deepmap:map-get(map-get($map, $keys), $subkey);
+    @return $deepmap;
+  }
+
+/*--------------------*/
+/* VARIABLES          */
+/*--------------------*/
+
+  // Enable Flexbox
+  $flexbox:map-deep-get($settings, 'columns', 'flexbox');
+
+  // Number of columns
+  $column_count:map-deep-get($settings, 'columns', 'count');
+
+  // Column prefix
+  $column_prefix:map-deep-get($settings, 'columns', 'prefix');
+
+  // Column container name (to clear floats or contain flexboxes)
+  $container_name:map-deep-get($settings, 'container', 'name');
+
+  // Margins for columns (Do not confuse with gutter)
+  $gaps:map-deep-get($settings, 'gaps', 'enable');
+  $gap_prefix:map-deep-get($settings, 'gaps', 'prefix');
+
+  // Gutters
+  $gutter:map-deep-get($settings, 'gutter', 'enable');
+  $grid_gutter_unit:map-deep-get($settings, 'gutter', 'unit');
+  $grid_gutter_size:map-deep-get($settings, 'gutter', 'size');
+
+  // Visibility
+  $visibility: map-deep-get($settings, 'visibility', 'enable');
+  $visibility_prefix: map-deep-get($settings, 'visibility', 'prefix');
+
+  // Mediqueries and viewports
+  $mediaqueries:map-deep-get($settings, 'mediaqueries', 'enable');
+  $viewports:map-get($settings, 'viewports');
+
+  // For debugging purposes
+  $debug:map-deep-get($settings, 'columns', 'debug');
+
+/*--------------------*/
+/* VIEW CONSTRAINT    */
+/*--------------------*/
+
+  @function get_view_limit($size, $constraint){
+    $view_constraint:map-deep-get($viewports, $size, $constraint);
+    @if ($view_constraint != null and $constraint != 'high-resolution'){
+      @return 'and (#{$constraint}:#{$view_constraint})';
+    }
+    @else if ($constraint == 'high-resolution' and $view_constraint == true){
+      @return 'and (-webkit-min-device-pixel-ratio:2), only screen and (min--moz-device-pixel-ratio:2), only screen and (-o-min-device-pixel-ratio:2/1), only screen and (min-device-pixel-ratio:2), only screen and (min-resolution:192dpi), only screen and (min-resolution:2dppx)';
+    }
+    @else {
+      @return '';
+    }
+  }
+
+/*--------------------*/
+/* COLUMNS            */
+/*--------------------*/
+  
+  // Flexbox or float container
+  @if ($flexbox == true){
+    .#{$container_name}{
+      display:-webkit-box;
+      display:-moz-box;
+      display:-ms-flexbox;
+      display:-webkit-flex;
+      display:flex;
+      flex-flow:row wrap;
+      justify-content:flex-start;
+      align-items:flex-start;
+      align-content:flex-start;
+    }
+  }
+  @else {
+    .#{$container_name}:after {
+      visibility:hidden;
+      display:block;
+      content:" ";
+      clear:both;
+      height:0;
+    }
+  }
+
+  [class*="#{$column_prefix}"] {
+
+    // Flexbox or float column
+    @if ($flexbox == true){
+      align-self:flex-start;
+      flex:none;
+    }
+    @else {
+      float:left;
+    }
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+
+    // Gutter
+    @if ($gutter == true){
+      @if ($grid_gutter_size > 0 and $grid_gutter_unit == "px"){
+        padding:0 #{($grid_gutter_size / 2)}px;
+      }
+    }
+
+    // Debug
+    @if ($debug == true){
+      box-shadow:0 0 0 1px red inset;
+    }
+
+  }
+
+  // Column generator
+  @for $index from 1 through $column_count {
+    .#{$column_prefix}-#{$index}{   
+      @if ($flexbox == true){
+        flex:0 0 percentage(($index / $column_count));
+      }
+      @else {
+        width:percentage(($index / $column_count));
+      }
+      @if ($debug == true and $grid_gutter_size > 0 and $grid_gutter_unit == "px"){
+        box-shadow:0 0 0 1px red inset, 0 0 0 unquote($grid_gutter_size / 2 + px) lime inset;
+      }
+    }
+    @if ($gaps == true){
+      .#{$gap_prefix}-left-#{$index}{
+        margin-left:percentage(($index / $column_count));
+      }
+      .#{$gap_prefix}-right-#{$index}{
+        margin-right:percentage(($index / $column_count));
+      }
+    }
+  }
+
+  @if ($visibility == true){
+    // Display none placeholder
+    %displaynone {
+      display:none;
+    }
+  }
+
+  // Create mediaqueries
+  @mixin create_mediaqueries(){
+
+    // Iterate viewports
+    @each $v, $map in $viewports {
+
+      $media:"only screen #{get_view_limit($v, 'min-width')} #{get_view_limit($v, 'max-width')} #{get_view_limit($v, 'min-height')} #{get_view_limit($v, 'max-height')} #{get_view_limit($v, 'high-resolution')} #{get_view_limit($v, 'orientation')}";
+      $create_columns:map-deep-get($viewports, $v, 'create_columns');
+
+      @if ($visibility == true){
+        .#{$visibility_prefix}-#{$v}{
+          @extend %displaynone;
+        }
+      }
+
+      @media #{$media} {
+        @if ($create_columns == true){
+          @for $index from 1 through $column_count {
+            .#{$column_prefix}-#{$index}-#{$v}{
+              @if ($flexbox == true){
+                flex:0 0 percentage(($index / $column_count));
+              }
+              @else {
+                width:percentage(($index / $column_count));
+              }
+            }
+            @if ($gaps == true){
+              .#{$gap_prefix}-left-#{$index}-#{$v}{
+                margin-left:percentage(($index / $column_count));
+              }
+              .#{$gap_prefix}-right-#{$index}-#{$v}{
+                margin-right:percentage(($index / $column_count));
+              }
+            }
+          }
+          .#{$visibility_prefix}-#{$v}{
+            display:block;
+          }
+        }
+      }
+
+    }
+
+  }
+
+  @if ($mediaqueries == true){
+    @include create_mediaqueries();
+  }
+
+
+/*--------------------*/
+/* EXTERNAL MIXINS    */
+/*--------------------*/
+
+  // Change column size
+  @mixin changecol($column_number){
+    width:percentage(($column_number / $column_count));
+  }
+
+  // Mediaqueries
+  @mixin mediaquery($size) {
+
+    $media:"only screen #{get_view_limit($size, 'min-width')} #{get_view_limit($size, 'max-width')} #{get_view_limit($size, 'min-height')} #{get_view_limit($size, 'max-height')} #{get_view_limit($size, 'high-resolution')} #{get_view_limit($size, 'orientation')}";
+    $create_columns:map-deep-get($viewports, $size, 'create_columns');
+
+    @media #{$media} {
+      @if ($create_columns == true){
+        @content;
+      }
+    }
+
+  }

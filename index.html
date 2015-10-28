@@ -15,7 +15,7 @@
 
   <section class="wrap downloadNow">
     <p>
-      <a target="_blank" href="https://github.com/Mango/ocssipital/releases">Download</a>
+      <a target="_blank" href="https://github.com/Mango/ocssipital/tree/master/dist">Download</a>
       <a target="_blank" href="https://github.com/Mango/ocssipital">Fork it</a>
     </p>
   </section>
@@ -39,8 +39,19 @@
       <h2>Native Flexbox support</h2>
       <p>By default, Ocssipital uses the recent <a href="http://www.w3.org/TR/css-flexbox-1/" target="_blank">Flexbox W3C specification</a> for its grid. Check its browser support <a href="http://caniuse.com/#feat=flexbox" target="_blank">here</a>.</p>
       <p>If flexbox is not the right choice for you right now, don't worry, Ocssipital already includes a traditional float layout that you can use as well.</p>
-      <p><a href="#reference">Checkout the available settings</a>.</p>
+      <p><a href="https://github.com/Mango/ocssipital" target="_blank">Checkout the full documentation &raquo;</a></p>
     </div>
+  </section>
+
+  <section class="wrap features">
+    <h2>Features</h2>
+    <ul class="grid-container">
+      <li class="grid-column-4 grid-column-12-s"><span>Supports flexbox grids</span></li>
+      <li class="grid-column-4 grid-column-12-s"><span>Fully responsive with media queries</span></li>
+      <li class="grid-column-4 grid-column-12-s"><span>Customizable breakpoints and class names</span></li>
+      <li class="grid-column-4 grid-column-12-s"><span>Includes gutters and spacing</span></li>
+      <li class="grid-column-4 grid-column-12-s"><span>Less than 1 Kb! (minified &amp; gziped)</span></li>
+    </ul>
   </section>
 
   <section class="wrap theGrid">
@@ -81,129 +92,56 @@
   <section class="wrap usage">
     <h2>Usage</h2>
     <div class="grid-container">
-      <div class="grid-column-4 grid-column-12-m grid-column-12-s">
+      <div class="grid-column-12">
+        <h3>Basic usage</h3>
+        <p>Working with Ocssipital is very easy. You can see an example below:</p>
 <pre><code class="language-html">
-&#x3C;!-- Create a container with children columns --&#x3E;
 &#x3C;div class=&#x22;grid-container&#x22;&#x3E;
-  &#x3C;div class=&#x22;grid-column-1&#x22;&#x3E;Three&#x3C;/div&#x3E;
+  &#x3C;div class=&#x22;grid-column-1&#x22;&#x3E;One&#x3C;/div&#x3E;
   &#x3C;div class=&#x22;grid-column-2&#x22;&#x3E;Two&#x3C;/div&#x3E;
   &#x3C;div class=&#x22;grid-column-3&#x22;&#x3E;Three&#x3C;/div&#x3E;
 &#x3C;/div&#x3E;
 </code></pre>
     </div>
-      <div class="grid-column-4 grid-column-12-m grid-column-12-s">
+      <div class="grid-column-12">
+        <h3>Size per viewport</h3>
+        <p>In addition to the base size, you can also add a column size according to a specifict viewport:</p>
 <pre><code class="language-html">
-&#x3C;!-- Change column sizes for specific viewports --&#x3E;
 &#x3C;div class=&#x22;grid-container&#x22;&#x3E;
-  &#x3C;div class=&#x22;grid-column-12-s&#x22;&#x3E;&#x3C;/div&#x3E;
-  &#x3C;div class=&#x22;grid-column-6-m&#x22;&#x3E;&#x3C;/div&#x3E;
-  &#x3C;div class=&#x22;grid-column-2-l&#x22;&#x3E;&#x3C;/div&#x3E;
+  &#x3C;!-- Size 12 on small screens --&#x3E;
+  &#x3C;div class=&#x22;grid-column-4 grid-column-12-s&#x22;&#x3E;One&#x3C;/div&#x3E;
+  &#x3C;!-- Size 6 on medium screens --&#x3E;
+  &#x3C;div class=&#x22;grid-column-4 grid-column-6-m&#x22;&#x3E;Two&#x3C;/div&#x3E;
+  &#x3C;!-- Size 3 on large screens --&#x3E;
+  &#x3C;div class=&#x22;grid-column-4 grid-column-3-l&#x22;&#x3E;Three&#x3C;/div&#x3E;
 &#x3C;/div&#x3E;
 </code></pre>
     </div>
-      <div class="grid-column-4 grid-column-12-m grid-column-12-s">
+      <div class="grid-column-6 grid-column-12-m grid-column-12-s">
+        <h3>Gaps</h3>
+        <p>Additionally, if you want to leave "holes" or gaps in your columns, you can do so:</p>
 <pre><code class="language-html">
-&#x3C;!-- Create grid gaps or hide elements --&#x3E;
 &#x3C;div class=&#x22;grid-container&#x22;&#x3E;
-  &#x3C;div class=&#x22;grid-gap-left-2&#x22;&#x3E;&#x3C;/div&#x3E;
-  &#x3C;div class=&#x22;grid-gap-right-2&#x22;&#x3E;&#x3C;/div&#x3E;
-  &#x3C;div class=&#x22;visible-xl&#x22;&#x3E;&#x3C;/div&#x3E;
+  &#x3C;!-- Creates a gap of size 3 from the left side --&#x3E;
+  &#x3C;div class=&#x22;grid-column-3 grid-gap-left-3&#x22;&#x3E;A 3 column gap to the left&#x3C;/div&#x3E;
+  &#x3C;!-- Creates a gap of size 3 from the right side --&#x3E;
+  &#x3C;div class=&#x22;grid-column-3 grid-gap-right-6&#x22;&#x3E;A 6 column gap to the right&#x3C;/div&#x3E;
 &#x3C;/div&#x3E;
 </code></pre>
+      </div>
+      <div class="grid-column-6 grid-column-12-m grid-column-12-s">
+        <h3>Visibility</h3>
+        <p>If you wish to show/hide elements according to the viewport, you can use visibility classes:</p>
+<pre><code class="language-html">
+&#x3C;div class=&#x22;grid-container&#x22;&#x3E;
+  &#x3C;!-- Only visible on small screens --&#x3E;
+  &#x3C;div class=&#x22;grid-column-4 grid-visible-s&#x22;&#x3E;One&#x3C;/div&#x3E;
+  &#x3C;!-- Only visible on large screens --&#x3E;
+  &#x3C;div class=&#x22;grid-column-4 grid-visible-l&#x22;&#x3E;Two&#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+</code></pre>
+      </div>
     </div>
-  </section>
-
-  <section class="wrap reference" id="reference">
-    <h2>Settings</h2>
-    <ul class="grid-container">
-      <li class="grid-column-3 grid-column-6-m grid-column-12-s">
-        <h3>Flexbox <sup>(Boolean)</sup></h3>
-        <p>Defines whether to use flexbox layout or traditional floats. <em>By default: true</em>.</p>
-<pre><code class="language-css">
-$flexbox:true;
-</code></pre>
-      </li>
-      <li class="grid-column-3 grid-column-6-m grid-column-12-s">
-        <h3>Column Count <sup>(Int)</sup></h3>
-        <p>Defines the amount of maximum columns for the grid. <em>By default: 12</em>.</p>
-<pre><code class="language-css">
-$column_count:12;
-</code></pre>
-      </li>
-      <li class="grid-column-3 grid-column-6-m grid-column-12-s">
-        <h3>Column Prefix <sup>(String)</sup></h3>
-        <p>Defines the class prefix that will be applied to each column. <em>By default: grid-column</em>.</p>
-<pre><code class="language-css">
-$column_prefix:"grid-column";
-</code></pre>
-      </li>
-      <li class="grid-column-3 grid-column-6-m grid-column-12-s">
-        <h3>Column Container <sup>(String)</sup></h3>
-        <p>Defines the name of the grid container. <em>By default: grid-container</em>.</p>
-<pre><code class="language-css">
-$container_name:"grid-container";
-</code></pre>
-      </li>
-      <li class="grid-column-3 grid-column-6-m grid-column-12-s">
-        <h3>Viewports <sup>(Array)</sup></h3>
-        <p>Defines your website viewports, breakpoints and grid generated styles. <em>By default: s, m, l</em>.</p>
-<pre><code class="language-css">
-$viewports:(s, 0, 639px, true) &hellip;;
-</code></pre>
-      </li>
-      <li class="grid-column-3 grid-column-6-m grid-column-12-s">
-        <h3>Debugging <sup>(Boolean)</sup></h3>
-        <p>Highlights all columns to be able to debug the layout. <em>By default: false</em>.</p>
-<pre><code class="language-css">
-$debug:false;
-</code></pre>
-      </li>
-      <li class="grid-column-3 grid-column-6-m grid-column-12-s">
-        <h3>Grid Gaps <sup>(Boolean)</sup></h3>
-        <p>Enables gaps as empty placeholders to use in your layout. <em>By default: true</em>.</p>
-<pre><code class="language-css">
-$gaps:true;
-</code></pre>
-      </li>
-      <li class="grid-column-3 grid-column-6-m grid-column-12-s">
-        <h3>Grid Gap Prefix <sup>(String)</sup></h3>
-        <p>Defines the class prefix related to the grid gaps. <em>By default: grid-gap</em>.</p>
-<pre><code class="language-css">
-$gap_prefix:"grid-gap";
-</code></pre>
-      </li>
-      <li class="grid-column-3 grid-column-6-m grid-column-12-s">
-        <h3>Grid Gutter Unit <sup>(String)</sup></h3>
-        <p>Defines the measuring unit for the gutter (atm. only px). <em>By default: px</em>.</p>
-<pre><code class="language-css">
-$grid_gutter_unit:"px";
-</code></pre>
-      </li>
-      <li class="grid-column-3 grid-column-6-m grid-column-12-s">
-        <h3>Grid Gutter Size <sup>(Int)</sup></h3>
-        <p>Defines the size of the gap for the current selected unit. <em>By default: 0</em>.</p>
-<pre><code class="language-css">
-$grid_gutter_size:0;
-</code></pre>
-      </li>
-    </ul>
-    <h2>Mixins</h2>
-    <ul class="grid-container">
-      <li class="grid-column-3 grid-column-6-m grid-column-12-s">
-        <h3>Mediaqueries</h3>
-        <p>Use this mixin to include custom styles in a specific viewport.</p>
-<pre><code class="language-css">
-@include mediaquery($viewport){}
-</code></pre>
-      </li>
-      <li class="grid-column-3 grid-column-6-m grid-column-12-s">
-        <h3>Change Column</h3>
-        <p>Changes an element's current column size for a different one.</p>
-<pre><code class="language-css">
-@include change_column($number){}
-</code></pre>
-      </li>
-    </ul>
   </section>
 
   <section class="wrap lettering">
@@ -235,7 +173,7 @@ $grid_gutter_size:0;
 
   <section class="wrap downloadNow">
     <p>
-      <a target="_blank" href="https://github.com/Mango/ocssipital/releases">Download</a>
+      <a target="_blank" href="https://github.com/Mango/ocssipital/tree/master/dist">Download</a>
       <a target="_blank" href="https://github.com/Mango/ocssipital">Fork it</a>
     </p>
   </section>
