@@ -112,15 +112,15 @@
   $debug:map-deep-get($settings, 'columns', 'debug');
 
 /*--------------------*/
-/* VIEW LIMIT         */
+/* VIEW CONSTRAINT    */
 /*--------------------*/
 
-  @function get_view_limit($size, $limit){
-    $view_limit:map-deep-get($viewports, $size, $limit);
-    @if ($view_limit != null and $limit != 'high-resolution'){
-      @return 'and (#{$limit}:#{$view_limit})';
+  @function get_view_limit($size, $constraint){
+    $view_constraint:map-deep-get($viewports, $size, $constraint);
+    @if ($view_constraint != null and $constraint != 'high-resolution'){
+      @return 'and (#{$constraint}:#{$view_constraint})';
     }
-    @else if ($limit == 'high-resolution' and $view_limit == true){
+    @else if ($constraint == 'high-resolution' and $view_constraint == true){
       @return 'and (-webkit-min-device-pixel-ratio:2), only screen and (min--moz-device-pixel-ratio:2), only screen and (-o-min-device-pixel-ratio:2/1), only screen and (min-device-pixel-ratio:2), only screen and (min-resolution:192dpi), only screen and (min-resolution:2dppx)';
     }
     @else {
@@ -194,7 +194,7 @@
         width:percentage(($index / $column_count));
       }
       @if ($debug == true and $grid_gutter_size > 0 and $grid_gutter_unit == "px"){
-        box-shadow:0 0 0 1px red inset, 0 0 0 #{($grid_gutter_size / 2)}px lime inset;
+        box-shadow:0 0 0 1px red inset, 0 0 0 unquote($grid_gutter_size / 2 + px) lime inset;
       }
     }
     @if ($gaps == true){
@@ -212,33 +212,6 @@
     %displaynone {
       display:none;
     }
-  }
-
-/*--------------------*/
-/* MIXINS             */
-/*--------------------*/
-
-  // Change column size
-  @mixin changecol($colsize){
-    width:percentage(($colsize / $column_count));
-  }
-
-  // External mediaquery
-  @mixin mediaquery($size) {
-
-    @each $v, $map in $viewports {
-
-      $media:"only screen #{get_view_limit($v, 'min-width')} #{get_view_limit($v, 'max-width')} #{get_view_limit($v, 'min-height')} #{get_view_limit($v, 'max-height')} #{get_view_limit($v, 'high-resolution')} #{get_view_limit($v, 'orientation')}";
-      $create_columns:map-deep-get($viewports, $v, 'create_columns');
-
-      @media #{$media} {
-        @if ($create_columns == true){
-          @content;
-        }
-      }
-
-    }
-
   }
 
   // Create mediaqueries
@@ -288,4 +261,32 @@
 
   @if ($mediaqueries == true){
     @include create_mediaqueries();
+  }
+
+
+/*--------------------*/
+/* EXTERNAL MIXINS    */
+/*--------------------*/
+
+  // Change column size
+  @mixin changecol($colsize){
+    width:percentage(($colsize / $column_count));
+  }
+
+  // Mediaqueries
+  @mixin mediaquery($size) {
+
+    @each $v, $map in $viewports {
+
+      $media:"only screen #{get_view_limit($v, 'min-width')} #{get_view_limit($v, 'max-width')} #{get_view_limit($v, 'min-height')} #{get_view_limit($v, 'max-height')} #{get_view_limit($v, 'high-resolution')} #{get_view_limit($v, 'orientation')}";
+      $create_columns:map-deep-get($viewports, $v, 'create_columns');
+
+      @media #{$media} {
+        @if ($create_columns == true){
+          @content;
+        }
+      }
+
+    }
+
   }
