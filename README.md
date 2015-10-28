@@ -153,6 +153,18 @@ $settings:(
     - `high-resolution`:  **(boolean)** if true, adds retina display and high-pixel density values to the viewport's mediaquery.
     - `create_columns`: **(boolean)** if true, creates columns for the current viewport. If set to *false*, the viewport will still be accesible for the *mediaquery() sass mixin*, but columns won't be created.
 
+### Changing prefixes
+
+If you change, for example, the column prefix from *"grid-column"* to **"col"**, you can laster use in your HTML:
+
+```html      
+<div class="grid-container">
+  <div class="col-1">One</div>
+  <div class="col-2">Two</div>
+  <div class="col-3">Three</div>
+</div>
+```
+
 ### Compiling ocssipital with your own settings 
 In the command line, run:
 ```       
