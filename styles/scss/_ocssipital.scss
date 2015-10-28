@@ -276,17 +276,13 @@
   // Mediaqueries
   @mixin mediaquery($size) {
 
-    @each $v, $map in $viewports {
+    $media:"only screen #{get_view_limit($size, 'min-width')} #{get_view_limit($size, 'max-width')} #{get_view_limit($size, 'min-height')} #{get_view_limit($size, 'max-height')} #{get_view_limit($size, 'high-resolution')} #{get_view_limit($size, 'orientation')}";
+    $create_columns:map-deep-get($viewports, $size, 'create_columns');
 
-      $media:"only screen #{get_view_limit($v, 'min-width')} #{get_view_limit($v, 'max-width')} #{get_view_limit($v, 'min-height')} #{get_view_limit($v, 'max-height')} #{get_view_limit($v, 'high-resolution')} #{get_view_limit($v, 'orientation')}";
-      $create_columns:map-deep-get($viewports, $v, 'create_columns');
-
-      @media #{$media} {
-        @if ($create_columns == true){
-          @content;
-        }
+    @media #{$media} {
+      @if ($create_columns == true){
+        @content;
       }
-
     }
 
   }
