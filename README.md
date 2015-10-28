@@ -1,6 +1,6 @@
 # Ocssipital
 
-> A grid creation boilerplate for <a href="http://sass-lang.com/" target="_blank">SASS</a>
+> A grid creation boilerplate for [SASS](http://sass-lang.com/)
 
 # Features
 
@@ -70,7 +70,7 @@ If you wish to show/hide elements according to the viewport, you can use visibil
 </div>
 ```
 
-# Settings
+# SASS Settings
 
 ### Default
 
@@ -152,7 +152,7 @@ $settings:(
     - `high-resolution`:  **(boolean)** if true, adds retina display and high-pixel density values to the viewport's mediaquery.
     - `create_columns`: **(boolean)** if true, creates columns for the current viewport. If set to *false*, the viewport will still be accesible for the *mediaquery() sass mixin*, but columns won't be created.
 
-# Mixins
+# SASS Mixins
 
 ### Mediaquery
 Call on a specific viewport (defined in the settings) and create custom styles for it:
@@ -193,7 +193,12 @@ Changes an element's current column size for a different one.
 }
 ```
 
-## With ❤ by
+# Browser support
+
+- **For [flexbox](http://caniuse.com/#feat=flexbox) layouts:** IE11+, Firefox 38+, Chrome 31+, Safari 9+, Opera 32+
+- **For float layouts:** IE8+, Firefox, Chrome, Safari, Opera
+
+# With ❤ by
 
 - Ignacio Ricci (VP of Product @ Mango)
  - E-mail: [ignacio.ricci@gmail.com](mailto:ignacio.ricci@gmail.com)
@@ -205,5 +210,5 @@ Changes an element's current column size for a different one.
  - Twitter: [@pazguille](http://twitter.com/pazguille)
  - Web: [http://pazguille.me](http://pazguille.me)
 
-## License
+# License
 MIT license. Copyright © 2015 [Mango](http://getmango.com).
