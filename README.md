@@ -74,7 +74,8 @@ If you wish to show/hide elements according to the viewport, you can use visibil
 
 ### SASS settings
 
-```sass  
+```sass
+/* styles/scss/ocssipital.scss */
 $settings:(
     columns: (
       count:12,
