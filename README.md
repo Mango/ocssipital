@@ -74,7 +74,7 @@ If you wish to show/hide elements according to the viewport, you can use visibil
 
 ### Default
 
-```
+```sass  
 $settings:(
     columns: (
       count:12,
