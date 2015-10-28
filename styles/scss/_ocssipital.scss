@@ -26,7 +26,7 @@
       prefix:"grid-gap"
     ),
     gutter:(
-      enable:true,
+      enable:false,
       unit:"px",
       size:0
     ),
@@ -269,8 +269,8 @@
 /*--------------------*/
 
   // Change column size
-  @mixin changecol($colsize){
-    width:percentage(($colsize / $column_count));
+  @mixin changecol($column_number){
+    width:percentage(($column_number / $column_count));
   }
 
   // Mediaqueries

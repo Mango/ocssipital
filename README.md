@@ -2,19 +2,24 @@
 
 > A grid creation boilerplate for <a href="http://sass-lang.com/" target="_blank">SASS</a>
 
-## Features
+# Features
 
-- Supports native flexbox grids
-- Customizable class names and viewport sizes
-- Less than 1 Kb! (min & gzip)
+- Supports flexbox grids
+- Fully responsive with media queries
+- Customizable breakpoints and class names
+- Includes gutters and spacing
+- Less than 1 Kb! (minified  & gziped)
 
-## Installation
+# Installation
 
-Run SASS on the project folder
+1. Download the repository
+2. `npm-install`dependencies
 
-## Usage
+# Usage
 
-Working with Ocssipital is easy. You can see an example below:
+### Basic usage
+
+Working with Ocssipital is very easy. You can see an example below:
 
 ```html
 <div class="grid-container">
@@ -24,118 +29,168 @@ Working with Ocssipital is easy. You can see an example below:
 </div>
 ```
 
-You can also change the column size according to the viewport. The larger the size, the wider the column.
+### Size per viewport
+
+In addition to the base size, you can also add a column size according to a specifict viewport:
 
 ```html
 <div class="grid-container">
-  <!-- Small screens -->
-  <div class="grid-column-12-s">One</div>
-  <!-- Medium screens -->
-  <div class="grid-column-6-m">Two</div>
-  <!-- Large screens -->
-  <div class="grid-column-3-l">Three</div>
+  <!-- Size 12 on small screens -->
+  <div class="grid-column-4 grid-column-12-s">One</div>
+  <!-- Size 6 on medium screens -->
+  <div class="grid-column-4 grid-column-6-m">Two</div>
+  <!-- Size 3 on large screens -->
+  <div class="grid-column-4 grid-column-3-l">Three</div>
 </div>
 ```
 
-Additionally, if you want to leave "holes" or gaps in your columns, you can do so with a class, rather than creating an empty element that looses semantics:
+### Gaps
+
+Additionally, if you want to leave "holes" or gaps in your columns, you can do so:
 
 ```html
 <div class="grid-container">
+  <!-- Creates a gap of size 3 from the left side -->
   <div class="grid-column-3 grid-gap-left-3">A 3 column gap to the left</div>
+  <!-- Creates a gap of size 3 from the right side -->
   <div class="grid-column-3 grid-gap-right-6">A 6 column gap to the right</div>
 </div>
 ```
 
-## Settings
+### Visibility
 
-#### Flexbox (Boolean)
-Defines whether to use flexbox or floats. By default: true.
+If you wish to show/hide elements according to the viewport, you can use visibility classes:
 
-```css
-$flexbox:true;
+```html
+<div class="grid-container">
+  <!-- Only visible on small screens -->
+  <div class="grid-column-4 grid-visible-s">One</div>
+  <!-- Only visible on large screens -->
+  <div class="grid-column-4 grid-visible-l">Two</div>
+</div>
 ```
 
-#### Column Count (Int)
-Defines the amount of maximum columns for the grid. By default: 12.
+# Settings
 
-```css
-$column_count:12;
+### Default
+
+```
+$settings:(
+    columns: (
+      count:12,
+      prefix:"grid-column",
+      flexbox:true,
+      debug:false
+    ),
+    container: (
+      enable:true,
+      name:"grid-container"
+    ),
+    gaps:(
+      enable:true,
+      prefix:"grid-gap"
+    ),
+    gutter:(
+      enable:false,
+      unit:"px",
+      size:0
+    ),
+    visibility:(
+      enable:true,
+      prefix: "grid-visible"
+    ),
+    mediaqueries:(
+      enable:true
+    ),
+    viewports:(
+      s: (
+        max-width:520px,
+        create_columns:true
+      ),
+      m: (
+        max-width:1000px,
+        create_columns:true
+      ),
+      l: (
+        min-width:1001px,
+        create_columns:true
+      ),
+      retina: (
+        high-resolution:true
+      )
+  );
 ```
 
-#### Column Prefix (String)
-Defines the class prefix for each column. By default: grid-column.
+### Customization
 
-```css
-$column_prefix:"grid-column";
-```
+- columns
+  - `count`**(int)** the amount of columns
+  - `prefix`: **(string)** the prefix of the column class name. *By default: "grid-column"*
+  - `flexbox`: **(boolean)** Wether to use flexbox or floats. *By default: true*
+  - `debug`: **(boolean)** Adds visual queues to show the grid. *By default: false*
+- container
+  - `enable`: **(boolean)** wether to create a container for your grid. *By default: true*
+  - `prefix`: **(string)** the prefix of the container class name. *By default: "grid-container"*
+- gaps
+  - `enable`: **(boolean)** wether to create gaps for your grid. *By default: true*
+  - `prefix`: **(string)** the prefix of the gaps class name. *By default: "grid-gap"*
+- gutter
+  - `enable`: **(boolean)** wether to create gutters for your grid. *By default: false*
+  - `unit`: **(string)** the unit for the gutter. *Options available: "px"*
+  - `size`: **(int)** the size to be multiplied with the gutter unit.
+- visibility
+  - `enable`: **(boolean)** wether to create visibility elements for your grid. *By default: true*
+  - `prefix`: **(string)** the prefix of the visibility class names. *By default: "grid-visible"*
+- mediaqueries
+  - `enable`: **(boolean)** wether to create mediaqueries for the grid or not. *By default: true*
+- viewports
+  - `size`: **(string)** the identification of the viewport size you want to use. *Examples: small, medium, etc."
+    - `min-width`: **(string)** the min-width value for the viewport's mediaquery.
+    - `max-width`: **(string)** the max-width value for the viewport's mediaquery.
+    - `min-height`: **(string)** the min-height value for the viewport's mediaquery.
+    - `max-height`: **(string)** the max-height value for the viewport's mediaquery.
+    - `high-resolution`:  **(boolean)** if true, adds retina display and high-pixel density values to the viewport's mediaquery.
+    - `create_columns`: **(boolean)** if true, creates columns for the current viewport. If set to *false*, the viewport will still be accesible for the *mediaquery() sass mixin*, but columns won't be created.
 
-#### Column Container (String)
-Defines the name of the container of the grid. By default: grid-container.
+# Mixins
 
-```css
-$container_name:"grid-container";
-```
+### Mediaquery
+Call on a specific viewport (defined in the settings) and create custom styles for it:
 
-#### Viewports (Array)
-Defines your website viewports and breakpoints. By default: s, m, l.
-
-```css
-$viewports:(s, 0, 520px, true), (m, 521px, 799px, true), (l, 800px, 0, true);
-```
-
-You can change the viewport name and min/max widths.
-Use the last boolean parameter to create grid styles for that viewport or not.
-
-#### Debugging (Boolean)
-Highlights all columns to be able to debug the layout. By default: false.
-
-```css
-$debug:false;
-```
-
-#### Grid Gaps (Boolean)
-Enables gaps as empty placeholders for your layout. By default: true.
-
-```css
-$gaps:true;
-```
-
-#### Grid Gap Prefix (String)
-Defines the class prefix for the gaps. By default: grid-gap.
-
-```css
-$gap_prefix:"grid-gap";
-```
-
-#### Grid Gutter Unit (String)
-Defines the measuring unit for the gutter (atm. only px). By default: px.
-
-
-```css
-$grid_gutter_unit:"px";
-```
-
-#### Grid Gutter Size (Int)
-Defines the size of the gap in the current unit. By default: 0.
-
-```css
-$grid_gutter_size:0;
-```
-
-## Mixins
-
-#### Mediaqueries
-Use this mixin to include custom styles in a specific viewport.
+#### Usage
 
 ```css       
-@include mediaquery($viewport){}
+@include mediaquery($size){}
 ```
 
-#### Change Column
+#### Example
+
+```css       
+@include mediaquery(s){
+  p {color:red;}
+}
+```
+
+### Change Column
 Changes an element's current column size for a different one.
 
+#### Usage
+
 ```css
-@include change_column($number){}
+@include change_column($column_number){}
+```
+
+#### Example
+```html
+<div class="grid-column-4 myDiv">MyDiv</div>
+```
+```sass
+@include mediaquery(s){
+  /* For the small viewport, change the column from size 4 to size 12 of .myDiv */
+  .myDiv {
+    @include change_column(12);
+  }
+}
 ```
 
 ## With ❤ by
