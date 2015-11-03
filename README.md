@@ -13,7 +13,7 @@
 # Installation
 
 1. Download the repository
-2. `npm-install`dependencies
+2. `npm install`dependencies
 
 # Usage
 
@@ -98,7 +98,7 @@ $settings:(
     ),
     visibility:(
       enable:true,
-      prefix: "grid-visible"
+      prefix:"grid-visible"
     ),
     mediaqueries:(
       enable:true
@@ -125,9 +125,9 @@ $settings:(
 ### SASS settings customization
 
 - columns
-  - `count`**(int)** the amount of columns
+  - `count`: **(int)** the amount of columns
   - `prefix`: **(string)** the prefix of the column class name. *By default: "grid-column"*
-  - `flexbox`: **(boolean)** Wether to use flexbox or floats. *By default: true*
+  - `flexbox`: **(boolean)** wether to use flexbox or floats. *By default: true*
   - `debug`: **(boolean)** Adds visual queues to show the grid. *By default: false*
 - container
   - `enable`: **(boolean)** wether to create a container for your grid. *By default: true*
@@ -157,7 +157,7 @@ $settings:(
 
 If you change, for example, the column prefix from *"grid-column"* to **"col"**, you can later use in your HTML:
 
-```html      
+```html
 <div class="grid-container">
   <div class="col-1">One</div>
   <div class="col-2">Two</div>
@@ -165,9 +165,9 @@ If you change, for example, the column prefix from *"grid-column"* to **"col"**,
 </div>
 ```
 
-### Compiling ocssipital with your own settings 
+### Compiling Ocssipital with your own settings
 In the command line, run:
-```       
+```
 node generator.js
 ```
 That will compile **styles/scss/ocssipital.scss** into **styles/css/ocssipital.css**
@@ -179,13 +179,13 @@ Call on a specific viewport (defined in the settings) and create custom styles f
 
 #### Usage
 
-```css       
+```css
 @include mediaquery($size){}
 ```
 
 #### Example
 
-```css       
+```css
 @include mediaquery(s){
   p {color:red;}
 }

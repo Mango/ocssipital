@@ -43,7 +43,6 @@ function renderSass(){
       console.log('Success: '.green + data.input_name.green + ' was compiled to'.green + data.output_name.green);
     }
   });
-  
 }
 
 renderSass();
