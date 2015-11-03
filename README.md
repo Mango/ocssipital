@@ -31,7 +31,7 @@ Working with Ocssipital is very easy. You can see an example below:
 
 ### Size per viewport
 
-In addition to the base size, you can also add a column size according to a specifict viewport:
+In addition to the base size, you can also add a column size according to a specific viewport:
 
 ```html
 <div class="grid-container">
