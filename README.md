@@ -8,7 +8,6 @@
 - Fully responsive with media queries
 - Customizable breakpoints and class names
 - Includes gutters and spacing
-- Less than 1 Kb! (minified  & gziped)
 
 # Installation
 
