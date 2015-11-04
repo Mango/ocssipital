@@ -1,5 +1,7 @@
 # Ocssipital
 
+[![NPM version][npm-image]][npm-link]
+
 > A grid creation boilerplate for [SASS](http://sass-lang.com/)
 
 # Features
@@ -231,3 +233,6 @@ Changes an element's current column size for a different one.
 
 # License
 MIT license. Copyright © 2015 [Mango](http://getmango.com).
+
+[npm-image]: https://img.shields.io/npm/v/ocssipital.svg?style=flat
+[npm-link]: https://npmjs.org/package/ocssipital
