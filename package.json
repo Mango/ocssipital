@@ -12,7 +12,8 @@
     "flexbox"
   ],
   "scripts": {
-    "build": "node generator.js"
+    "build": "node generator.js",
+    "test": "node generator.js"
   },
   "license": "MIT",
   "devDependencies": {

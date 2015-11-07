@@ -1,6 +1,4 @@
-# Ocssipital
-
-[![NPM version][npm-image]][npm-link]
+# Ocssipital [![NPM version][npm-image]][npm-link] [![Build status][travis-image]][travis-link]
 
 > A grid creation boilerplate for [SASS](http://sass-lang.com/)
 
@@ -10,6 +8,9 @@
 - Fully responsive with media queries
 - Customizable breakpoints and class names
 - Includes gutters and spacing
+
+# Demos
+- **Basic:** https://mango.github.io/ocssipital/demos/basic.html
 
 # Installation
 
@@ -169,7 +170,7 @@ If you change, for example, the column prefix from *"grid-column"* to **"col"**,
 ### Compiling Ocssipital with your own settings
 In the command line, run:
 ```
-node generator.js
+npm run build
 ```
 That will compile **styles/scss/ocssipital.scss** into **styles/css/ocssipital.css**
 
@@ -236,3 +237,5 @@ MIT license. Copyright © 2015 [Mango](http://getmango.com).
 
 [npm-image]: https://img.shields.io/npm/v/ocssipital.svg?style=flat
 [npm-link]: https://npmjs.org/package/ocssipital
+[travis-image]: https://img.shields.io/travis/Mango/ocssipital.svg?style=flat
+[travis-link]: https://travis-ci.org/Mango/ocssipital
