@@ -10,7 +10,7 @@
 - Includes gutters and spacing
 
 # Demos
-- **Basic:** https://mango.github.io/ocssipital/demos/basic.html
+- [Basic](https://mango.github.io/ocssipital/demos/basic.html)
 
 # Installation
 
