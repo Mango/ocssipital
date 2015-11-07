@@ -1,14 +1,22 @@
 {
   "name": "ocssipital",
-  "version": "0.0.0",
-  "description": "",
-  "main": "generator.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "repository": "git@github.com:Mango/ocssipital.git",
+  "description": "A grid creation boilerplate for SASS",
   "author": "Ignacio Ricci (ignacio.ricci@gmail.com)",
+  "version": "0.0.1",
+  "keywords": [
+    "layout",
+    "grid",
+    "sass",
+    "responsive",
+    "flexbox"
+  ],
+  "scripts": {
+    "build": "node generator.js",
+    "test": "node generator.js"
+  },
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "mkdirp": "0.5.1",
     "node-sass": "3.3.3",
     "colors": "1.1.2"
